@@ -1,4 +1,3 @@
-
 package com.portfolio.beportfolio.model;
 
 import javax.persistence.Entity;
@@ -11,20 +10,20 @@ import lombok.Setter;
 
 @Getter @Setter
 @Entity
-@Table(name = "country")
-public class Country {
+@Table(name = "studylevel")
+public class Studylevel {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idCountry;
+    private int idStudylevel;
     private String description;
     
-    public Country(){
+    public Studylevel(){
         
     }
-    public Country(int idCountry, String description){
+    public Studylevel(int idStudylevel, String description){
         
-        this.idCountry = idCountry;
+        this.idStudylevel = idStudylevel;
         this.description = description;
         
     }

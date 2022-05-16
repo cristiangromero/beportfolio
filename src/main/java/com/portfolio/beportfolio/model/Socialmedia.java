@@ -8,6 +8,6 @@ package com.portfolio.beportfolio.model;
  *
  * @author Criss
  */
-public class Graduation {
+public class Socialmedia {
     
 }

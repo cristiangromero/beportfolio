@@ -1,11 +1,13 @@
 package com.portfolio.beportfolio.model;
 
 import java.util.Date;
+import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -36,8 +38,8 @@ public class User {
     private Civil idCivil;
     @ManyToOne
     private City idCity;
-    @ManyToOne
-    private Graduation idGraduation;
+    @OneToMany
+    private UserLanguage idUserLanguage;
     
     public User(){
         
@@ -46,7 +48,7 @@ public class User {
     public User(int idUser, String name, String surname, String email, String phone, 
                 String street, int number, java.sql.Date birth, int children, 
                 String picture,String iam, String aboutme, String mydescript, String mydescript2,
-                String resume, Civil idCivil, City idCity, Graduation idGraduation){
+                String resume, Civil idCivil, City idCity){
         this.idUser = idUser;
         this.name = name;
         this.surname = surname;
@@ -64,7 +66,6 @@ public class User {
         this.resume = resume;
         this.idCivil = idCivil;
         this.idCity = idCity;
-        this.idGraduation = idGraduation;
     }
     
 }
