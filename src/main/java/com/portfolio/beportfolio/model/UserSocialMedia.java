@@ -12,10 +12,11 @@ import lombok.Setter;
 
 @Getter @Setter
 @Entity
-@Table(name = "user_language")
-public class UserLanguage implements Serializable{
+@Table(name = "user_socialmedia")
+public class UserSocialMedia implements Serializable{
+    
     @EmbeddedId
-    private UserLanguage idUserLanguage;
+    private UserSocialMedia idUserSocialMedia;
     
     @ManyToOne
     @MapsId("idUser")
@@ -23,20 +24,20 @@ public class UserLanguage implements Serializable{
     private User idUser;
     
     @ManyToOne
-    @MapsId("idLanguage")
+    @MapsId("idSocialMedia")
     @JoinColumn
-    private Language idLanguage;
+    private SocialMedia idSocialMedia;
     
-    private int percent;
+    private String url;
     
-    public UserLanguage(){
+    public UserSocialMedia(){
         
     }
     
-    public UserLanguage(User idUser, Language idLanguage, int percent){
+    public UserSocialMedia(User idUser, SocialMedia idSocialMedia, String url){
         this.idUser = idUser;
-        this.idLanguage = idLanguage;
-        this.percent = percent;
+        this.idSocialMedia = idSocialMedia;
+        this.url = url;
     }
     
 }

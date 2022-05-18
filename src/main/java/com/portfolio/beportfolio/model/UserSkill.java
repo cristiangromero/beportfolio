@@ -12,10 +12,10 @@ import lombok.Setter;
 
 @Getter @Setter
 @Entity
-@Table(name = "user_language")
-public class UserLanguage implements Serializable{
+@Table(name = "user_skill")
+public class UserSkill implements Serializable{
     @EmbeddedId
-    private UserLanguage idUserLanguage;
+    private UserSkill idUserSkill;
     
     @ManyToOne
     @MapsId("idUser")
@@ -23,20 +23,21 @@ public class UserLanguage implements Serializable{
     private User idUser;
     
     @ManyToOne
-    @MapsId("idLanguage")
+    @MapsId("idSkill")
     @JoinColumn
-    private Language idLanguage;
+    private Skill idSkill;
     
     private int percent;
     
-    public UserLanguage(){
+    public UserSkill(){
         
     }
     
-    public UserLanguage(User idUser, Language idLanguage, int percent){
+    public UserSkill(User idUser, Skill idSkill, int percent){
         this.idUser = idUser;
-        this.idLanguage = idLanguage;
+        this.idSkill = idSkill;
         this.percent = percent;
     }
+    
     
 }

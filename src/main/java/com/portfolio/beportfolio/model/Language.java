@@ -24,10 +24,11 @@ public class Language {
     public Language(){
         
     }
-    public Language(int idLanguage, String description){
+    public Language(int idLanguage, String description, UserLanguage idUserLanguage){
         
         this.idLanguage = idLanguage;
         this.description = description;
+        this.idUserLanguage = idUserLanguage;
         
     }
     
