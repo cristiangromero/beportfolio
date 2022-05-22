@@ -14,7 +14,7 @@ import lombok.Setter;
 @Getter @Setter
 @Entity
 @Table(name = "socialMedia")
-public class SMedia {
+public class SocialMedia {
         
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,10 +23,10 @@ public class SMedia {
     @OneToMany(mappedBy = "idSocialMedia")
     private Set<UserSocialMedia> socialMediaUrls = new HashSet<>();
     
-    public SMedia(){
+    public SocialMedia(){
         
     }
-    public SMedia(int idSocialMedia, String description){
+    public SocialMedia(int idSocialMedia, String description){
         
         this.idSocialMedia = idSocialMedia;
         this.description = description;        

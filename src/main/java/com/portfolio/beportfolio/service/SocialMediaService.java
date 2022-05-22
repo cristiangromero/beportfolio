@@ -1,6 +1,6 @@
 package com.portfolio.beportfolio.service;
 
-import com.portfolio.beportfolio.model.SMedia;
+import com.portfolio.beportfolio.model.SocialMedia;
 import com.portfolio.beportfolio.repository.SocialMediaRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +12,12 @@ public class SocialMediaService implements ISocialMediaService{
     public SocialMediaRepository socialMediaRepo;
     
     @Override
-    public List<SMedia> listSocialMedia() {
+    public List<SocialMedia> listSocialMedia() {
         return socialMediaRepo.findAll();
     }
 
     @Override
-    public void newSocialMedia(SMedia socialMedia) {
+    public void newSocialMedia(SocialMedia socialMedia) {
         socialMediaRepo.save(socialMedia);
     }
     
@@ -27,12 +27,12 @@ public class SocialMediaService implements ISocialMediaService{
     }
 
     @Override
-    public SMedia findSocialMedia(int id) {
+    public SocialMedia findSocialMedia(int id) {
        return socialMediaRepo.findById(id).orElse(null);
     }
     
     @Override
-    public void editSocialMedia(SMedia socialMedia) {
+    public void editSocialMedia(SocialMedia socialMedia) {
         socialMediaRepo.save(socialMedia);
     }
 }

@@ -4,7 +4,7 @@
  */
 package com.portfolio.beportfolio.Controller;
 
-import com.portfolio.beportfolio.model.SMedia;
+import com.portfolio.beportfolio.model.SocialMedia;
 import com.portfolio.beportfolio.service.ISocialMediaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,18 +23,18 @@ public class SocialMediaController {
     private ISocialMediaService socialMediaServ;    
     
     @PostMapping("/new/socialMedia")
-    public void addSocialMedia (@RequestBody SMedia socialMedia){
+    public void addSocialMedia (@RequestBody SocialMedia socialMedia){
         socialMediaServ.newSocialMedia(socialMedia);
     }
     @GetMapping("/list/socialMedia")
     @ResponseBody
-    public List<SMedia> listSocialMedia(){
+    public List<SocialMedia> listSocialMedia(){
         return socialMediaServ.listSocialMedia();
     }
    
     @GetMapping("/findsocialMedia/{id}")
     @ResponseBody
-    public SMedia findSocialMedia(@PathVariable Integer id){
+    public SocialMedia findSocialMedia(@PathVariable Integer id){
         return socialMediaServ.findSocialMedia(id);
     }
     
@@ -44,13 +44,13 @@ public class SocialMediaController {
     }
     
     @PutMapping("/edit/socialMedia")
-    public void editSocialMedia (@RequestBody SMedia socialMedia){
+    public void editSocialMedia (@RequestBody SocialMedia socialMedia){
         socialMediaServ.editSocialMedia(socialMedia);
     }
     
     @PutMapping("/editsocialMedia/{id}")
     public void editSocialMedia(@PathVariable Integer id) {
-        SMedia socialMedia= findSocialMedia(id);
+        SocialMedia socialMedia= findSocialMedia(id);
         socialMediaServ.editSocialMedia(socialMedia);
     }
 }

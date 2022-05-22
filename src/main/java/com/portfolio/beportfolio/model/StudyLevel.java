@@ -11,17 +11,17 @@ import lombok.Setter;
 @Getter @Setter
 @Entity
 @Table(name = "studylevel")
-public class SLevel {
+public class StudyLevel {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idStudylevel;
     private String description;
     
-    public SLevel(){
+    public StudyLevel(){
         
     }
-    public SLevel(int idStudylevel, String description){
+    public StudyLevel(int idStudylevel, String description){
         
         this.idStudylevel = idStudylevel;
         this.description = description;
