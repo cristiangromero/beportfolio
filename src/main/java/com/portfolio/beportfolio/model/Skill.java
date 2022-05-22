@@ -1,5 +1,6 @@
 package com.portfolio.beportfolio.model;
 
+import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,7 +20,7 @@ public class Skill {
     private int idSkill;
     private String description;
     @OneToMany(mappedBy = "idSkill")
-    private Set<UserSkill> skillPercents;
+    private Set<UserSkill> skillPercents= new HashSet<>();
     
     public Skill(){
         

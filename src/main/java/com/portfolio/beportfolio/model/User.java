@@ -1,5 +1,6 @@
 package com.portfolio.beportfolio.model;
 
+import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -38,11 +39,11 @@ public class User {
     @ManyToOne
     private City idCity;
     @OneToMany(mappedBy = "idUser")
-    private Set<UserLanguage> languagePercents;
+    private Set<UserLanguage> languagePercents = new HashSet<>();
     @OneToMany(mappedBy = "idUser")
-    private Set<UserSkill> skillPercents;
+    private Set<UserSkill> skillPercents = new HashSet<>();
     @OneToMany(mappedBy = "idUser")
-    private Set<UserSocialMedia> socialMediaUrls;
+    private Set<UserSocialMedia> socialMediaUrls = new HashSet<>();
     
     public User(){
         
