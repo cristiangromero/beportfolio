@@ -1,12 +1,12 @@
 package com.portfolio.beportfolio.service;
 
-import com.portfolio.beportfolio.model.SocialMedia;
+import com.portfolio.beportfolio.model.SMedia;
 import java.util.List;
 
 public interface ISocialMediaService {
-    public List<SocialMedia> listSocialMedia();
-    public void newSocialMedia(SocialMedia socialMedia);
+    public List<SMedia> listSocialMedia();
+    public void newSocialMedia(SMedia socialMedia);
     public void deleteSocialMedia(int id);
-    public SocialMedia findSocialMedia(int id);
-    public void editSocialMedia(SocialMedia socialMedia);
+    public SMedia findSocialMedia(int id);
+    public void editSocialMedia(SMedia socialMedia);
 }

@@ -26,7 +26,7 @@ public class UserSocialMedia{
     @ManyToOne
     @MapsId("idSocialMedia")
     @JoinColumn(name = "idSocialMedia")
-    private SocialMedia idSocialMedia;
+    private SMedia idSocialMedia;
     
     private String url;
     
@@ -34,7 +34,7 @@ public class UserSocialMedia{
         
     }
     
-    public UserSocialMedia(User idUser, SocialMedia idSocialMedia, String url){
+    public UserSocialMedia(User idUser, SMedia idSocialMedia, String url){
         this.idUserSocialMedia = new UserSocialMediaKey(idUser.getIdUser(),idSocialMedia.getIdSocialMedia());
         this.idUser = idUser;
         this.idSocialMedia = idSocialMedia;

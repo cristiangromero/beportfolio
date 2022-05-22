@@ -4,7 +4,7 @@
  */
 package com.portfolio.beportfolio.service;
 
-import com.portfolio.beportfolio.model.StudyLevel;
+import com.portfolio.beportfolio.model.SLevel;
 import com.portfolio.beportfolio.repository.StudyLevelRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +16,12 @@ public class StudyLevelService implements IStudyLevelService{
     public StudyLevelRepository studyLevelRepo;
     
     @Override
-    public List<StudyLevel> listStudyLevel() {
+    public List<SLevel> listStudyLevel() {
         return studyLevelRepo.findAll();
     }
 
     @Override
-    public void newStudyLevel(StudyLevel studyLevel) {
+    public void newStudyLevel(SLevel studyLevel) {
         studyLevelRepo.save(studyLevel);
     }
     
@@ -31,12 +31,12 @@ public class StudyLevelService implements IStudyLevelService{
     }
 
     @Override
-    public StudyLevel findStudyLevel(int id) {
+    public SLevel findStudyLevel(int id) {
        return studyLevelRepo.findById(id).orElse(null);
     }
     
     @Override
-    public void editStudyLevel(StudyLevel studyLevel) {
+    public void editStudyLevel(SLevel studyLevel) {
         studyLevelRepo.save(studyLevel);
     }
 }

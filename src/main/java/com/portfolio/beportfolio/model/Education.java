@@ -22,7 +22,7 @@ public class Education {
     private boolean currentStudy;
     private String institute;
     @ManyToOne
-    private StudyLevel idStudylevel;
+    private SLevel idStudylevel;
     @ManyToOne
     private User idUser;
     
@@ -32,7 +32,7 @@ public class Education {
     
     public Education(int idEducation, String title, java.sql.Date dateini, 
                      java.sql.Date datefinish, boolean currentStudy, String institute,
-                     StudyLevel idStudylevel, User idUser){
+                     SLevel idStudylevel, User idUser){
         
         this.idEducation = idEducation;
         this.title = title;
