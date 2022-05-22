@@ -1,6 +1,5 @@
 package com.portfolio.beportfolio.model;
 
-import java.util.Date;
 import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -38,12 +37,12 @@ public class User {
     private Civil idCivil;
     @ManyToOne
     private City idCity;
- /*   @OneToMany
-    private UserLanguage idUserLanguage;
-    @OneToMany
-    private UserSkill idUserSkill;
-    @OneToMany
-    private UserSocialMedia idUserSocialMedia; */
+    @OneToMany(mappedBy = "idUser")
+    private Set<UserLanguage> languagePercents;
+    @OneToMany(mappedBy = "idUser")
+    private Set<UserSkill> skillPercents;
+    @OneToMany(mappedBy = "idUser")
+    private Set<UserSocialMedia> socialMediaUrls;
     
     public User(){
         
@@ -52,7 +51,7 @@ public class User {
     public User(int idUser, String name, String surname, String email, String phone, 
                 String street, int number, java.sql.Date birth, int children, 
                 String picture,String iam, String aboutme, String mydescript, String mydescript2,
-                String resume, Civil idCivil, City idCity/*, UserLanguage idUserLanguage, UserSkill idUserSkill, UserSocialMedia idUserSocialMedia*/){
+                String resume, Civil idCivil, City idCity){
         this.idUser = idUser;
         this.name = name;
         this.surname = surname;
@@ -70,9 +69,7 @@ public class User {
         this.resume = resume;
         this.idCivil = idCivil;
         this.idCity = idCity;
-    /*    this.idUserLanguage = idUserLanguage;
-        this.idUserSkill = idUserSkill;
-        this.idUserSocialMedia = idUserSocialMedia;*/
+        
     }
     
 }

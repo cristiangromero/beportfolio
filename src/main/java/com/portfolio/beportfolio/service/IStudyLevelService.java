@@ -1,13 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
 package com.portfolio.beportfolio.service;
 
-/**
- *
- * @author Criss
- */
+import com.portfolio.beportfolio.model.StudyLevel;
+import java.util.List;
+
 public interface IStudyLevelService {
-    
+    public List<StudyLevel> listStudyLevel();
+    public void newStudyLevel(StudyLevel studyLevel);
+    public void deleteStudyLevel(int id);
+    public StudyLevel findStudyLevel(int id);
+    public void editStudyLevel(StudyLevel studyLevel);
 }

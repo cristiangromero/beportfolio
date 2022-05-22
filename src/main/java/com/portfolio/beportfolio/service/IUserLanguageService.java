@@ -4,10 +4,11 @@
  */
 package com.portfolio.beportfolio.service;
 
-/**
- *
- * @author Criss
- */
+import com.portfolio.beportfolio.model.UserLanguage;
+import java.util.List;
+
 public interface IUserLanguageService {
-    
+    public List<UserLanguage> listUserLanguage();
+    public void newUserLanguage(UserLanguage userLanguage);
+    public void editUserLanguage(UserLanguage userLanguage);
 }

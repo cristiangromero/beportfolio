@@ -8,6 +8,9 @@ import java.util.List;
 public interface IStateService {
     
     public List<State> listState();
-    public State findState (int id); 
+    public void newState(State state);
+    public void deleteState(int id);
+    public State findState(int id);
+    public void editState(State state);
     
 }
