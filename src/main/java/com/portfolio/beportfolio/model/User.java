@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -35,8 +36,10 @@ public class User {
     private String mydescript2;
     private String resume;
     @ManyToOne
+    @JoinColumn(name = "idCivil")
     private Civil idCivil;
     @ManyToOne
+    @JoinColumn(name = "idCity")
     private City idCity;
     @OneToMany(mappedBy = "idUser")
     private Set<UserLanguage> languagePercents = new HashSet<>();
