@@ -1,6 +1,5 @@
 package com.portfolio.beportfolio.model;
 
-import java.io.Serializable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -13,18 +12,18 @@ import lombok.Setter;
 @Getter @Setter
 @Entity
 @Table(name = "user_skill")
-public class UserSkill implements Serializable{
+public class UserSkill{
     @EmbeddedId
-    private UserSkill idUserSkill;
+    private UserSkillKey idUserSkill;
     
     @ManyToOne
     @MapsId("idUser")
-    @JoinColumn
+    @JoinColumn(name = "idUser")
     private User idUser;
     
     @ManyToOne
     @MapsId("idSkill")
-    @JoinColumn
+    @JoinColumn(name = "idSkill")
     private Skill idSkill;
     
     private int percent;
@@ -34,6 +33,7 @@ public class UserSkill implements Serializable{
     }
     
     public UserSkill(User idUser, Skill idSkill, int percent){
+        this.idUserSkill = new UserSkillKey(idUser.getIdUser(),idSkill.getIdSkill());
         this.idUser = idUser;
         this.idSkill = idSkill;
         this.percent = percent;

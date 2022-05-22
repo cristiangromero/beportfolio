@@ -18,8 +18,23 @@ public class CityService implements ICityService{
     }
 
     @Override
+    public void newCity(City city) {
+        cityRepo.save(city);
+    }
+    
+    @Override
+    public void deleteCity(int id) {
+       cityRepo.deleteById(id);
+    }
+
+    @Override
     public City findCity(int id) {
        return cityRepo.findById(id).orElse(null);
+    }
+    
+    @Override
+    public void editCity(City city) {
+        cityRepo.save(city);
     }
     
 }

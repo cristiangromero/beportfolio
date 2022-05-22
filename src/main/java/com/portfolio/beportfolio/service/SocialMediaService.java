@@ -1,13 +1,40 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.portfolio.beportfolio.service;
 
-/**
- *
- * @author Criss
- */
-public class SocialMediaService {
+import com.portfolio.beportfolio.model.SocialMedia;
+import com.portfolio.beportfolio.repository.SocialMediaRepository;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class SocialMediaService implements ISocialMediaService{
+    
+    @Autowired
+    public SocialMediaRepository socialMediaRepo;
+    
+    @Override
+    public List<SocialMedia> listSocialMedia() {
+        return socialMediaRepo.findAll();
+    }
+
+    @Override
+    public void newSocialMedia(SocialMedia socialMedia) {
+        socialMediaRepo.save(socialMedia);
+    }
+    
+    @Override
+    public void deleteSocialMedia(int id) {
+       socialMediaRepo.deleteById(id);
+    }
+
+    @Override
+    public SocialMedia findSocialMedia(int id) {
+       return socialMediaRepo.findById(id).orElse(null);
+    }
+    
+    @Override
+    public void editSocialMedia(SocialMedia socialMedia) {
+        socialMediaRepo.save(socialMedia);
+    }
     
 }

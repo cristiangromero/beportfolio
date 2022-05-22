@@ -1,13 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
 package com.portfolio.beportfolio.service;
 
-/**
- *
- * @author Criss
- */
+import com.portfolio.beportfolio.model.SocialMedia;
+import java.util.List;
+
+
 public interface ISocialMediaService {
-    
+    public List<SocialMedia> listSocialMedia();
+    public void newSocialMedia(SocialMedia socialMedia);
+    public void deleteSocialMedia(int id);
+    public SocialMedia findSocialMedia (int id);
+    public void editSocialMedia(SocialMedia socialMedia);
 }

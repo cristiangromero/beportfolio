@@ -1,6 +1,5 @@
 package com.portfolio.beportfolio.model;
 
-import java.io.Serializable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -13,19 +12,19 @@ import lombok.Setter;
 @Getter @Setter
 @Entity
 @Table(name = "user_socialmedia")
-public class UserSocialMedia implements Serializable{
+public class UserSocialMedia{
     
     @EmbeddedId
-    private UserSocialMedia idUserSocialMedia;
+    private UserSocialMediaKey idUserSocialMedia;
     
     @ManyToOne
     @MapsId("idUser")
-    @JoinColumn
+    @JoinColumn(name = "idUser")
     private User idUser;
     
     @ManyToOne
     @MapsId("idSocialMedia")
-    @JoinColumn
+    @JoinColumn(name = "idSocialMedia")
     private SocialMedia idSocialMedia;
     
     private String url;
@@ -35,6 +34,7 @@ public class UserSocialMedia implements Serializable{
     }
     
     public UserSocialMedia(User idUser, SocialMedia idSocialMedia, String url){
+        this.idUserSocialMedia = new UserSocialMediaKey(idUser.getIdUser(), idSocialMedia.getIdSocialMedia());
         this.idUser = idUser;
         this.idSocialMedia = idSocialMedia;
         this.url = url;
