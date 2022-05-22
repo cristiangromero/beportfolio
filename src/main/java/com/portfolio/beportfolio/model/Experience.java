@@ -1,5 +1,6 @@
 package com.portfolio.beportfolio.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,11 +19,16 @@ public class Experience {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idExperience;
+    @Column(nullable = false, length = 150)
     private String title;
+    @Column(length = 150)
     private String expertise;
+    @Column(nullable = false)
     private java.sql.Date dateini;
     private java.sql.Date datefinish;
+    @Column(nullable = true)
     private boolean currentJob;
+    @Column(nullable = false, length = 150)
     private String company;
     private String description;
     @ManyToOne

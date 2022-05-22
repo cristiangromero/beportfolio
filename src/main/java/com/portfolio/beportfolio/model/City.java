@@ -1,6 +1,7 @@
 
 package com.portfolio.beportfolio.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,6 +21,7 @@ public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idCity;
+    @Column(nullable = false)
     private String description;
     @ManyToOne
     @JoinColumn(name = "idState")

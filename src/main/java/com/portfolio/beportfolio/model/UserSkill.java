@@ -1,5 +1,6 @@
 package com.portfolio.beportfolio.model;
 
+import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -25,7 +26,7 @@ public class UserSkill{
     @MapsId("idSkill")
     @JoinColumn(name = "idSkill")
     private Skill idSkill;
-    
+    @Column(length = 3)
     private int percent;
     
     public UserSkill(){

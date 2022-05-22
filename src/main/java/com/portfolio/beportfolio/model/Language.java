@@ -2,6 +2,7 @@ package com.portfolio.beportfolio.model;
 
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,6 +20,7 @@ public class Language {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idLanguage;
+    @Column(nullable = false, length = 150)
     private String description;
     @OneToMany(mappedBy = "idLanguage")
     private Set<UserLanguage> languagePercents = new HashSet<>();

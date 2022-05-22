@@ -1,5 +1,6 @@
 package com.portfolio.beportfolio.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,6 +19,7 @@ public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idProject;
+    @Column(nullable = false, length = 150)
     private String title;
     private String url;
     private String rol;

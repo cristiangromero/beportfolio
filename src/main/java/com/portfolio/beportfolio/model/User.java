@@ -2,6 +2,7 @@ package com.portfolio.beportfolio.model;
 
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,20 +22,24 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idUser;
+    @Column(nullable = false, length = 150)
     private String name;
+    @Column(nullable = false, length = 150)
     private String surname;
+    @Column(length = 150)
     private String email;
+    @Column(length = 15)
     private String phone;
+    @Column(nullable = true, length = 150)
     private String street;
-    private int number;
+    @Column(nullable = true)
+    private int streetNumber;
     private java.sql.Date birth;
+    @Column(nullable = true)
     private int children;
     private String picture;
     private String iam;
     private String aboutme;
-    private String mydescript;
-    private String mydescript2;
-    private String resume;
     @ManyToOne
     @JoinColumn(name = "idCivil")
     private Civil idCivil;
@@ -53,24 +58,20 @@ public class User {
     }
     
     public User(int idUser, String name, String surname, String email, String phone, 
-                String street, int number, java.sql.Date birth, int children, 
-                String picture,String iam, String aboutme, String mydescript, String mydescript2,
-                String resume, Civil idCivil, City idCity){
+                String street, int streetNumber, java.sql.Date birth, int children, 
+                String picture,String iam, String aboutme, Civil idCivil, City idCity){
         this.idUser = idUser;
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.phone = phone;
         this.street = street;
-        this.number = number;
+        this.streetNumber = streetNumber;
         this.birth = birth;
         this.children = children;
         this.picture = picture;
         this.iam = iam;
         this.aboutme = aboutme;
-        this.mydescript = mydescript;
-        this.mydescript2 = mydescript2;
-        this.resume = resume;
         this.idCivil = idCivil;
         this.idCity = idCity;
         
