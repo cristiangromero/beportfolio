@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ProjectService implements IProjectService{
-    @Autowired
+        @Autowired
     public ProjectRepository projectRepo;
     
     @Override

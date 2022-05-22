@@ -1,6 +1,5 @@
 package com.portfolio.beportfolio.model;
 
-import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,16 +17,17 @@ public class Skill {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idSkill;
     private String description;
-    @OneToMany(mappedBy = "idSkill")
-    Set <UserSkill> skillPercents;
+    @OneToMany
+    private UserSkill idUserSkill;
     
     public Skill(){
         
     }
-    public Skill(int idSkill, String description){
+    public Skill(int idSkill, String description, UserSkill idUserSkill){
         
         this.idSkill = idSkill;
         this.description = description;
+        this.idUserSkill = idUserSkill;
         
     }
 }

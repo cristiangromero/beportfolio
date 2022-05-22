@@ -1,6 +1,5 @@
 package com.portfolio.beportfolio.model;
 
-import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,16 +18,17 @@ public class Language {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idLanguage;
     private String description;
-    @OneToMany (mappedBy = "idLanguage")
-    Set <UserLanguage> languagePercents;
+    @OneToMany
+    private UserLanguage idUserLanguage;
     
     public Language(){
         
     }
-    public Language(int idLanguage, String description){
+    public Language(int idLanguage, String description, UserLanguage idUserLanguage){
         
         this.idLanguage = idLanguage;
         this.description = description;
+        this.idUserLanguage = idUserLanguage;
         
     }
     

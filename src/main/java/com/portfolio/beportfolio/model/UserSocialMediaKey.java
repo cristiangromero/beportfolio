@@ -1,13 +1,12 @@
 package com.portfolio.beportfolio.model;
 
-import java.io.Serializable;
 import javax.persistence.Embeddable;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
 @Embeddable
-public class UserSocialMediaKey implements Serializable{
+public class UserSocialMediaKey {
     
     private int idUser;
     private int idSocialMedia;

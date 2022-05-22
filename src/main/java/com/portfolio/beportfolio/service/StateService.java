@@ -16,22 +16,7 @@ public class StateService implements IStateService{
     }
 
     @Override
-    public void newState(State state) {
-        stateRepo.save(state);
-    }
-    
-    @Override
-    public void deleteState(int id) {
-       stateRepo.deleteById(id);
-    }
-
-    @Override
     public State findState(int id) {
        return stateRepo.findById(id).orElse(null);
-    }
-    
-    @Override
-    public void editState(State state) {
-        stateRepo.save(state);
     }
 }

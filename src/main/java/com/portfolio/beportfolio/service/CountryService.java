@@ -11,30 +11,15 @@ public class CountryService implements ICountryService{
     
     @Autowired
     public CountryRepository countryRepo;
-    
+
     @Override
     public List<Country> listCountry() {
         return countryRepo.findAll();
     }
 
     @Override
-    public void newCountry(Country country) {
-        countryRepo.save(country);
-    }
-    
-    @Override
-    public void deleteCountry(int id) {
-       countryRepo.deleteById(id);
-    }
-
-    @Override
     public Country findCountry(int id) {
-       return countryRepo.findById(id).orElse(null);
-    }
-    
-    @Override
-    public void editCountry(Country country) {
-        countryRepo.save(country);
+        return countryRepo.findById(id).orElse(null);
     }
 
 }

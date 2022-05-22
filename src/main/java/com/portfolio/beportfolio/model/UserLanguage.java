@@ -1,5 +1,6 @@
 package com.portfolio.beportfolio.model;
 
+import java.io.Serializable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -12,18 +13,18 @@ import lombok.Setter;
 @Getter @Setter
 @Entity
 @Table(name = "user_language")
-public class UserLanguage{
+public class UserLanguage implements Serializable{
     @EmbeddedId
-    private UserLanguageKey idUserLanguage;
+    private UserLanguage idUserLanguage;
     
     @ManyToOne
     @MapsId("idUser")
-    @JoinColumn(name = "idUser")
+    @JoinColumn
     private User idUser;
     
     @ManyToOne
     @MapsId("idLanguage")
-    @JoinColumn(name = "idLanguage")
+    @JoinColumn
     private Language idLanguage;
     
     private int percent;
@@ -33,7 +34,6 @@ public class UserLanguage{
     }
     
     public UserLanguage(User idUser, Language idLanguage, int percent){
-        this.idUserLanguage = new UserLanguageKey(idUser.getIdUser(), idLanguage.getIdLanguage());
         this.idUser = idUser;
         this.idLanguage = idLanguage;
         this.percent = percent;
