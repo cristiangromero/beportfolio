@@ -1,38 +1,38 @@
-
 package com.portfolio.beportfolio.model;
 
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
 @Entity
-@Table(name = "state")
-public class State {
+@Table(name = "language")
+public class Language {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idState;
+    private int idLanguage;
     @Column(nullable = false, length = 150)
     private String description;
-    @ManyToOne
-    @JoinColumn(name = "idCountry")
-    private Country idCountry;
+    @OneToMany(mappedBy = "idLanguage")
+    private Set<UserLanguage> languagePercents = new HashSet<>();
     
-    public State(){
+    public Language(){
         
     }
-    public State(int idState, String description, Country idCountry){
+    public Language(int idLanguage, String description){
         
-        this.idState = idState;
-        this.description = description;
-        this.idCountry = idCountry;
-
+        this.idLanguage = idLanguage;
+        this.description = description;        
+        
     }
+    
 }

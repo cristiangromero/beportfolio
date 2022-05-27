@@ -1,4 +1,3 @@
-
 package com.portfolio.beportfolio.model;
 
 import javax.persistence.Column;
@@ -6,33 +5,29 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
 @Entity
-@Table(name = "state")
-public class State {
+@Table(name = "studyLevel")
+public class StudyLevel {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idState;
+    private int idStudylevel;
     @Column(nullable = false, length = 150)
     private String description;
-    @ManyToOne
-    @JoinColumn(name = "idCountry")
-    private Country idCountry;
     
-    public State(){
+    public StudyLevel(){
         
     }
-    public State(int idState, String description, Country idCountry){
+    public StudyLevel(int idStudylevel, String description){
         
-        this.idState = idState;
+        this.idStudylevel = idStudylevel;
         this.description = description;
-        this.idCountry = idCountry;
-
+        
     }
+    
 }

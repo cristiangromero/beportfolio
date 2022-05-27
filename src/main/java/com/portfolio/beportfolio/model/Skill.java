@@ -1,38 +1,36 @@
-
 package com.portfolio.beportfolio.model;
 
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
 @Entity
-@Table(name = "state")
-public class State {
+@Table(name = "skill")
+public class Skill {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idState;
+    private int idSkill;
     @Column(nullable = false, length = 150)
     private String description;
-    @ManyToOne
-    @JoinColumn(name = "idCountry")
-    private Country idCountry;
+    @OneToMany(mappedBy = "idSkill")
+    private Set<UserSkill> skillPercents= new HashSet<>();
     
-    public State(){
+    public Skill(){
         
     }
-    public State(int idState, String description, Country idCountry){
+    public Skill(int idSkill, String description){
         
-        this.idState = idState;
+        this.idSkill = idSkill;
         this.description = description;
-        this.idCountry = idCountry;
-
+        
     }
 }

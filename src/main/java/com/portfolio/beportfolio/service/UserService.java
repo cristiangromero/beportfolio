@@ -1,16 +1,16 @@
 package com.portfolio.beportfolio.service;
 
 import com.portfolio.beportfolio.model.User;
-import com.portfolio.beportfolio.repository.UsersRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.portfolio.beportfolio.repository.UserRepository;
 
 @Service
-public class UsersService implements IUsersService {
+public class UserService implements IUserService {
 
     @Autowired
-    public UsersRepository userRepo;
+    public UserRepository userRepo;
     
     @Override
     public List<User> listUsers() {

@@ -5,9 +5,11 @@ import com.portfolio.beportfolio.model.State;
 import com.portfolio.beportfolio.repository.StateRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class StateService implements IStateService{
-    @Autowired
+        @Autowired
     public StateRepository stateRepo;
     
     @Override
@@ -16,7 +18,22 @@ public class StateService implements IStateService{
     }
 
     @Override
+    public void newState(State state) {
+        stateRepo.save(state);
+    }
+    
+    @Override
+    public void deleteState(int id) {
+       stateRepo.deleteById(id);
+    }
+
+    @Override
     public State findState(int id) {
        return stateRepo.findById(id).orElse(null);
+    }
+    
+    @Override
+    public void editState(State state) {
+        stateRepo.save(state);
     }
 }

@@ -1,4 +1,3 @@
-
 package com.portfolio.beportfolio.model;
 
 import javax.persistence.Column;
@@ -14,25 +13,34 @@ import lombok.Setter;
 
 @Getter @Setter
 @Entity
-@Table(name = "state")
-public class State {
+@Table(name = "project")
+public class Project {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idState;
+    private int idProject;
     @Column(nullable = false, length = 150)
+    private String title;
+    private String url;
+    private String rol;
     private String description;
     @ManyToOne
-    @JoinColumn(name = "idCountry")
-    private Country idCountry;
+    @JoinColumn(name = "idUser")
+    private User idUser;
     
-    public State(){
+    public Project(){
         
     }
-    public State(int idState, String description, Country idCountry){
+    
+    public Project(int idProject, String title, String url, String rol, String description, User idUser){
         
-        this.idState = idState;
+        this.idProject = idProject;
+        this.title = title;
+        this.url = url;
+        this.rol = rol;
         this.description = description;
-        this.idCountry = idCountry;
-
+        this.idUser = idUser;
+        
     }
+    
 }
