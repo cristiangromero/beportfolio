@@ -6,7 +6,7 @@ import java.util.List;
 public interface ISocialMediaService {
     public List<SocialMedia> listSocialMedia();
     public void newSocialMedia(SocialMedia socialMedia);
-    public void deleteSocialMedia(int id);
-    public SocialMedia findSocialMedia(int id);
+    public void deleteSocialMedia(SocialMedia socialMedia);
+    public SocialMedia findSocialMedia(Long id);
     public void editSocialMedia(SocialMedia socialMedia);
 }

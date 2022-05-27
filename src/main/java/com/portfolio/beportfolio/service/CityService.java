@@ -24,12 +24,12 @@ public class CityService implements ICityService{
     }
     
     @Override
-    public void deleteCity(int id) {
-       cityRepo.deleteById(id);
+    public void deleteCity(City city) {
+       cityRepo.delete(city);
     }
 
     @Override
-    public City findCity(int id) {
+    public City findCity(Long id) {
        return cityRepo.findById(id).orElse(null);
     }
     
@@ -37,5 +37,4 @@ public class CityService implements ICityService{
     public void editCity(City city) {
         cityRepo.save(city);
     }
-    
 }

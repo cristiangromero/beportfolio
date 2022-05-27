@@ -7,8 +7,8 @@ public interface IUserService {
     
     public List<User> listUsers();
     public void newUser(User usr);
-    public void deleteUser(int id);
-    public User findUser (int id);
+    public void deleteUser(User usr);
+    public User findUser (Long id);
     public void editUser(User usr);
     
 }

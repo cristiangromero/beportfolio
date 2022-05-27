@@ -8,7 +8,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ProjectService implements IProjectService{
-        @Autowired
+    
+    @Autowired
     public ProjectRepository projectRepo;
     
     @Override
@@ -22,12 +23,12 @@ public class ProjectService implements IProjectService{
     }
     
     @Override
-    public void deleteProject(int id) {
-       projectRepo.deleteById(id);
+    public void deleteProject(Project project) {
+       projectRepo.delete(project);
     }
 
     @Override
-    public Project findProject(int id) {
+    public Project findProject(Long id) {
        return projectRepo.findById(id).orElse(null);
     }
     

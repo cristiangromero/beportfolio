@@ -23,12 +23,12 @@ public class CourseService implements ICourseService{
     }
     
     @Override
-    public void deleteCourse(int id) {
-       courseRepo.deleteById(id);
+    public void deleteCourse(Course course) {
+       courseRepo.delete(course);
     }
 
     @Override
-    public Course findCourse(int id) {
+    public Course findCourse(Long id) {
        return courseRepo.findById(id).orElse(null);
     }
     

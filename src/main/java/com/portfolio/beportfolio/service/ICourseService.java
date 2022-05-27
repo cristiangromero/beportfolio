@@ -7,8 +7,8 @@ public interface ICourseService {
     
     public List<Course> listCourse();
     public void newCourse(Course course);
-    public void deleteCourse(int id);
-    public Course findCourse(int id);
+    public void deleteCourse(Course course);
+    public Course findCourse(Long id);
     public void editCourse(Course course);
     
 }

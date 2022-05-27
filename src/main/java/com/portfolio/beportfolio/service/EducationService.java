@@ -23,12 +23,12 @@ public class EducationService implements IEducationService{
     }
     
     @Override
-    public void deleteEducation(int id) {
-       educationRepo.deleteById(id);
+    public void deleteEducation(Education education) {
+       educationRepo.delete(education);
     }
 
     @Override
-    public Education findEducation(int id) {
+    public Education findEducation(Long id) {
        return educationRepo.findById(id).orElse(null);
     }
     
@@ -36,5 +36,4 @@ public class EducationService implements IEducationService{
     public void editEducation(Education education) {
         educationRepo.save(education);
     }
-    
 }

@@ -8,16 +8,22 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter @Setter
 @Entity
 @Table(name = "course")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idCourse;
+    private Long idCourse;
     @Column(nullable = false, length = 150)
     private String title;
     private String url;
@@ -26,7 +32,7 @@ public class Course {
     @ManyToOne
     @JoinColumn(name = "idUser")
     private User idUser;
-    
+/*    
     public Course(){
         
     }
@@ -40,4 +46,5 @@ public class Course {
         this.idUser = idUser;
         
     }
+*/
 }

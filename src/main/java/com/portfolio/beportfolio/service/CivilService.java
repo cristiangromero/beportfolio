@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class CivilService implements ICivilService{
     
-        @Autowired
+    @Autowired
     public CivilRepository civilRepo;
     
     @Override
@@ -26,12 +26,12 @@ public class CivilService implements ICivilService{
     }
     
     @Override
-    public void deleteCivil(int id) {
-       civilRepo.deleteById(id);
+    public void deleteCivil(Civil civil) {
+       civilRepo.delete(civil);
     }
 
     @Override
-    public Civil findCivil(int id) {
+    public Civil findCivil(Long id) {
        return civilRepo.findById(id).orElse(null);
     }
     
@@ -39,5 +39,4 @@ public class CivilService implements ICivilService{
     public void editCivil(Civil civil) {
         civilRepo.save(civil);
     }
-    
 }

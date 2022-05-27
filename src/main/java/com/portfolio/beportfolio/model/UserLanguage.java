@@ -7,15 +7,23 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter @Setter
 @Entity
 @Table(name = "user_language")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode
 public class UserLanguage{
     @EmbeddedId
-    private UserLanguageKey idUserLanguage;
+    private UserLanguageKey idUserLanguage = new UserLanguageKey();
     
     @ManyToOne
     @MapsId("idUser")
@@ -26,9 +34,9 @@ public class UserLanguage{
     @MapsId("idLanguage")
     @JoinColumn(name = "idLanguage")
     private Language idLanguage;
-    @Column(length = 3)
-    private int percent;
     
+    private int percent;
+/*    
     public UserLanguage(){
         
     }
@@ -39,5 +47,5 @@ public class UserLanguage{
         this.idLanguage = idLanguage;
         this.percent = percent;
     }
-    
+*/    
 }

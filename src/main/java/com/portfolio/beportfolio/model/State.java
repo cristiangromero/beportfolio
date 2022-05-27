@@ -9,22 +9,28 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter @Setter
 @Entity
 @Table(name = "state")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class State {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idState;
+    private Long idState;
     @Column(nullable = false, length = 150)
     private String description;
     @ManyToOne
     @JoinColumn(name = "idCountry")
     private Country idCountry;
-    
+/*    
     public State(){
         
     }
@@ -35,4 +41,5 @@ public class State {
         this.idCountry = idCountry;
 
     }
+*/
 }

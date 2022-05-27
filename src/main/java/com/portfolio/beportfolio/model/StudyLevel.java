@@ -6,20 +6,26 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter @Setter
 @Entity
 @Table(name = "studyLevel")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class StudyLevel {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idStudylevel;
+    private Long idStudylevel;
     @Column(nullable = false, length = 150)
     private String description;
-    
+/*    
     public StudyLevel(){
         
     }
@@ -29,5 +35,5 @@ public class StudyLevel {
         this.description = description;
         
     }
-    
+*/    
 }

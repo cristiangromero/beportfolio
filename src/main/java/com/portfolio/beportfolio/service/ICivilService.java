@@ -7,7 +7,7 @@ import java.util.List;
 public interface ICivilService {
     public List<Civil> listCivil();
     public void newCivil(Civil civil);
-    public void deleteCivil(int id);
-    public Civil findCivil(int id);
+    public void deleteCivil(Civil civil);
+    public Civil findCivil(Long id);
     public void editCivil(Civil civil);
 }

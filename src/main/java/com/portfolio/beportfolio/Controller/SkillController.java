@@ -4,48 +4,58 @@ import com.portfolio.beportfolio.model.Skill;
 import com.portfolio.beportfolio.service.ISkillService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin
+@RequestMapping("/api/skill")
 public class SkillController {
-        @Autowired
+    @Autowired
     private ISkillService skillServ;    
     
-    @PostMapping("/new/skill")
+    @PostMapping
     public void addSkill (@RequestBody Skill skill){
         skillServ.newSkill(skill);
     }
-    @GetMapping("/list/skill")
+    @GetMapping
     @ResponseBody
     public List<Skill> listSkill(){
         return skillServ.listSkill();
     }
    
-    @GetMapping("/findskill/{id}")
+    @GetMapping("/{id}")
     @ResponseBody
-    public Skill findSkill(@PathVariable Integer id){
+    public Skill findSkill(@PathVariable Long id){
         return skillServ.findSkill(id);
     }
     
-    @DeleteMapping("/deleteskill/{id}")
-    public void deleteSkill (@PathVariable Integer id){
-        skillServ.deleteSkill(id);
+    @DeleteMapping("/{id}")
+    public void deleteSkill (@PathVariable Long id){
+        Skill skill = findSkill(id);
+        skillServ.deleteSkill(skill);
     }
     
-    @PutMapping("/edit/skill")
+    @DeleteMapping
+    public void deleteSkill (@RequestBody Skill skill){
+        skillServ.deleteSkill(skill);
+    }
+    
+    @PutMapping
     public void editSkill (@RequestBody Skill skill){
         skillServ.editSkill(skill);
     }
     
-    @PutMapping("/editskill/{id}")
-    public void editSkill(@PathVariable Integer id) {
+    @PutMapping("/{id}")
+    public void editSkill(@PathVariable Long id) {
         Skill skill= findSkill(id);
         skillServ.editSkill(skill);
     }

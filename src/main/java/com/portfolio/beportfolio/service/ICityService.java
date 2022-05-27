@@ -8,7 +8,7 @@ import java.util.List;
 public interface ICityService {
     public List<City> listCity();
     public void newCity(City city);
-    public void deleteCity(int id);
-    public City findCity(int id);
+    public void deleteCity(City city);
+    public City findCity(Long id);
     public void editCity(City city);
 }
