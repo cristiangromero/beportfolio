@@ -16,7 +16,6 @@ import lombok.Setter;
 @EqualsAndHashCode
 @Embeddable
 public class UserLanguageKey implements Serializable{
-    
     private Long idUser;
     private Long idLanguage;
  /*   

@@ -11,45 +11,43 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api/country")
 public class CountryController {
     @Autowired
     private ICountryService countryServ;    
     
-    @PostMapping
+    @PostMapping("/api/country")
     public void addCountry (@RequestBody Country country){
         countryServ.newCountry(country);
     }
-    @GetMapping
+    @GetMapping("/api/country")
     @ResponseBody
     public List<Country> listCountry(){
         return countryServ.listCountry();
     }
    
-    @GetMapping("/{id}")
+    @GetMapping("/api/country/{id}")
     @ResponseBody
     public Country findCountry(@PathVariable Long id){
         return countryServ.findCountry(id);
     }
     
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/api/country/{id}")
     public void deleteCountry (@PathVariable Long id){
         Country country= findCountry(id);
         countryServ.deleteCountry(country);
     }
     
-    @PutMapping
+    @PutMapping("/api/country")
     public void editCountry (@RequestBody Country country){
         countryServ.editCountry(country);
     }
     
-    @PutMapping("/{id}")
+    @PutMapping("/api/country/{id}")
     public void editCountry(@PathVariable Long id) {
         Country country= findCountry(id);
         countryServ.editCountry(country);

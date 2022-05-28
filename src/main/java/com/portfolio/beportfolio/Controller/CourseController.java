@@ -11,45 +11,43 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api/course")
 public class CourseController {
     @Autowired
     private ICourseService courseServ;    
     
-    @PostMapping
+    @PostMapping("/api/course")
     public void addCourse (@RequestBody Course course){
         courseServ.newCourse(course);
     }
-    @GetMapping
+    @GetMapping("/api/course")
     @ResponseBody
     public List<Course> listCourse(){
         return courseServ.listCourse();
     }
    
-    @GetMapping("/{id}")
+    @GetMapping("/api/course/{id}")
     @ResponseBody
     public Course findCourse(@PathVariable Long id){
         return courseServ.findCourse(id);
     }
     
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/api/course/{id}")
     public void deleteCourse (@PathVariable Long id){
         Course course= findCourse(id);
         courseServ.deleteCourse(course);
     }
     
-    @PutMapping
+    @PutMapping("/api/course")
     public void editCourse (@RequestBody Course course){
         courseServ.editCourse(course);
     }
     
-    @PutMapping("/{id}")
+    @PutMapping("/api/course/{id}")
     public void editCourse(@PathVariable Long id) {
         Course course= findCourse(id);
         courseServ.editCourse(course);

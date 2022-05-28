@@ -1,5 +1,6 @@
 package com.portfolio.beportfolio.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -29,11 +30,13 @@ public class UserSocialMedia{
     @ManyToOne
     @MapsId("idUser")
     @JoinColumn(name = "idUser")
+    @JsonIgnore
     private User idUser;
     
     @ManyToOne
     @MapsId("idSocialMedia")
     @JoinColumn(name = "idSocialMedia")
+    @JsonIgnore
     private SocialMedia idSocialMedia;
     
     private String url;

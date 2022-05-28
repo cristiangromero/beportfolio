@@ -1,6 +1,6 @@
 package com.portfolio.beportfolio.model;
 
-import javax.persistence.Column;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -28,11 +28,13 @@ public class UserLanguage{
     @ManyToOne
     @MapsId("idUser")
     @JoinColumn(name = "idUser")
+    @JsonIgnore
     private User idUser;
     
     @ManyToOne
     @MapsId("idLanguage")
     @JoinColumn(name = "idLanguage")
+    @JsonIgnore
     private Language idLanguage;
     
     private int percent;

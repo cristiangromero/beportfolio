@@ -11,45 +11,43 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api/studylevel")
 public class StudyLevelController {
     @Autowired
     private IStudyLevelService studyLevelServ;    
     
-    @PostMapping
+    @PostMapping("/api/studylevel")
     public void addStudyLevel (@RequestBody StudyLevel studyLevel){
         studyLevelServ.newStudyLevel(studyLevel);
     }
-    @GetMapping
+    @GetMapping("/api/studylevel")
     @ResponseBody
     public List<StudyLevel> listStudyLevel(){
         return studyLevelServ.listStudyLevel();
     }
    
-    @GetMapping("/{id}")
+    @GetMapping("/api/studylevel/{id}")
     @ResponseBody
     public StudyLevel findStudyLevel(@PathVariable Long id){
         return studyLevelServ.findStudyLevel(id);
     }
     
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/api/studylevel/{id}")
     public void deleteStudyLevel (@PathVariable Long id){
         StudyLevel studyLevel= findStudyLevel(id);
         studyLevelServ.deleteStudyLevel(studyLevel);
     }
     
-    @PutMapping
+    @PutMapping("/api/studylevel")
     public void editStudyLevel (@RequestBody StudyLevel studyLevel){
         studyLevelServ.editStudyLevel(studyLevel);
     }
     
-    @PutMapping("/{id}")
+    @PutMapping("/api/studylevel/{id}")
     public void editStudyLevel(@PathVariable Long id) {
         StudyLevel studyLevel= findStudyLevel(id);
         studyLevelServ.editStudyLevel(studyLevel);

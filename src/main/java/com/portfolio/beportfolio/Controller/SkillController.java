@@ -11,50 +11,48 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api/skill")
 public class SkillController {
     @Autowired
     private ISkillService skillServ;    
     
-    @PostMapping
+    @PostMapping("/api/skill")
     public void addSkill (@RequestBody Skill skill){
         skillServ.newSkill(skill);
     }
-    @GetMapping
+    @GetMapping("/api/skill")
     @ResponseBody
     public List<Skill> listSkill(){
         return skillServ.listSkill();
     }
    
-    @GetMapping("/{id}")
+    @GetMapping("/api/skill/{id}")
     @ResponseBody
     public Skill findSkill(@PathVariable Long id){
         return skillServ.findSkill(id);
     }
     
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/api/skill/{id}")
     public void deleteSkill (@PathVariable Long id){
         Skill skill = findSkill(id);
         skillServ.deleteSkill(skill);
     }
     
-    @DeleteMapping
+    @DeleteMapping("/api/skill")
     public void deleteSkill (@RequestBody Skill skill){
         skillServ.deleteSkill(skill);
     }
     
-    @PutMapping
+    @PutMapping("/api/skill")
     public void editSkill (@RequestBody Skill skill){
         skillServ.editSkill(skill);
     }
     
-    @PutMapping("/{id}")
+    @PutMapping("/api/skill/{id}")
     public void editSkill(@PathVariable Long id) {
         Skill skill= findSkill(id);
         skillServ.editSkill(skill);

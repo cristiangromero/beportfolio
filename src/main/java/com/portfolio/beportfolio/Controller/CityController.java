@@ -11,45 +11,43 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api/city")
 public class CityController {
     @Autowired
     private ICityService cityServ;    
     
-    @PostMapping
+    @PostMapping("/api/city")
     public void addCity (@RequestBody City city){
         cityServ.newCity(city);
     }
-    @GetMapping
+    @GetMapping("/api/city")
     @ResponseBody
     public List<City> listCity(){
         return cityServ.listCity();
     }
    
-    @GetMapping("/{id}")
+    @GetMapping("/api/city/{id}")
     @ResponseBody
     public City findCity(@PathVariable Long id){
         return cityServ.findCity(id);
     }
     
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/api/city/{id}")
     public void deleteCity (@PathVariable Long id){
         City city= findCity(id);
         cityServ.deleteCity(city);
     }
     
-    @PutMapping
+    @PutMapping("/api/city")
     public void editCity (@RequestBody City city){
         cityServ.editCity(city);
     }
     
-    @PutMapping("/{id}")
+    @PutMapping("/api/city/{id}")
     public void editCity(@PathVariable Long id) {
         City city= findCity(id);
         cityServ.editCity(city);

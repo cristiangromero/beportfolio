@@ -38,8 +38,7 @@ public class UserService implements IUserService {
 
     @Override
     public void newUser(User usr) {
-        User newUser = new User();
-        newUser.setIdUser(usr.getIdUser());
+        User newUser = new User();     
         newUser.setName(usr.getName());
         newUser.setSurname(usr.getSurname());
         newUser.setEmail(usr.getEmail());
@@ -90,7 +89,7 @@ public class UserService implements IUserService {
                 })
                 .collect(Collectors.toList())
         ));
-        userRepo.save(usr);
+        userRepo.save(newUser);
     }
     
     @Override
@@ -105,7 +104,58 @@ public class UserService implements IUserService {
     
     @Override
     public void editUser(User usr) {
-        userRepo.save(usr);
+        User editUser = new User();     
+        editUser.setName(usr.getName());
+        editUser.setSurname(usr.getSurname());
+        editUser.setEmail(usr.getEmail());
+        editUser.setPhone(usr.getPhone());
+        editUser.setStreet(usr.getStreet());
+        editUser.setStreetNumber(usr.getStreetNumber());
+        editUser.setBirth(usr.getBirth());
+        editUser.setChildren(usr.getChildren());
+        editUser.setPicture(usr.getPicture());
+        editUser.setIam(usr.getIam());
+        editUser.setName(usr.getName());
+        editUser.setAboutme(usr.getAboutme());
+        editUser.setIdCivil(usr.getIdCivil());
+        editUser.setIdCity(usr.getIdCity());
+        editUser.getLanguages().addAll((usr.getLanguages()
+                .stream()
+                .map(userLanguage -> {
+                    Language language = languageRepo.findById(userLanguage.getIdLanguage().getIdLanguage()).orElse(null);
+                    UserLanguage editUl = new UserLanguage();
+                    editUl.setIdLanguage(language);
+                    editUl.setIdUser(editUser);
+                    editUl.setPercent(userLanguage.getPercent());
+                    return editUl;
+                })
+                .collect(Collectors.toList())
+        ));
+        editUser.getSkills().addAll((usr.getSkills()
+                .stream()
+                .map(userSkill -> {
+                    Skill skill = skillRepo.findById(userSkill.getIdSkill().getIdSkill()).orElse(null);
+                    UserSkill editUs = new UserSkill();
+                    editUs.setIdSkill(skill);
+                    editUs.setIdUser(editUser);
+                    editUs.setPercent(userSkill.getPercent());
+                    return editUs;
+                })
+                .collect(Collectors.toList())
+        ));
+        editUser.getSocials().addAll((usr.getSocials()
+                .stream()
+                .map(userSocialMedia -> {
+                    SocialMedia socialMedia = socialRepo.findById(userSocialMedia.getIdSocialMedia().getIdSocialMedia()).orElse(null);
+                    UserSocialMedia editUsm = new UserSocialMedia();
+                    editUsm.setIdSocialMedia(socialMedia);
+                    editUsm.setIdUser(editUser);
+                    editUsm.setUrl(userSocialMedia.getUrl());
+                    return editUsm;
+                })
+                .collect(Collectors.toList())
+        ));
+        userRepo.save(editUser);
     }
     
 }

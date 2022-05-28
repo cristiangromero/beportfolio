@@ -11,45 +11,43 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api/civil")
 public class CivilController {
     @Autowired
     private ICivilService civilServ;    
     
-    @PostMapping
+    @PostMapping("/api/civil")
     public void addCivil (@RequestBody Civil civil){
         civilServ.newCivil(civil);
     }
-    @GetMapping
+    @GetMapping("/api/civil")
     @ResponseBody
     public List<Civil> listCivil(){
         return civilServ.listCivil();
     }
    
-    @GetMapping("/{id}")
+    @GetMapping("/api/civil/{id}")
     @ResponseBody
     public Civil findCivil(@PathVariable Long id){
         return civilServ.findCivil(id);
     }
     
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/api/civil/{id}")
     public void deleteCivil (@PathVariable Long id){
         Civil civil= findCivil(id);
         civilServ.deleteCivil(civil);
     }
     
-    @PutMapping
+    @PutMapping("/api/civil")
     public void editCivil (@RequestBody Civil civil){
         civilServ.editCivil(civil);
     }
     
-    @PutMapping("/{id}")
+    @PutMapping("/api/civil/{id}")
     public void editCivil(@PathVariable Long id) {
         Civil civil= findCivil(id);
         civilServ.editCivil(civil);

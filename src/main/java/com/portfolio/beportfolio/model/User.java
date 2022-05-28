@@ -1,9 +1,8 @@
 package com.portfolio.beportfolio.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -56,7 +55,7 @@ public class User {
     @JoinColumn(name = "idCity")
     private City idCity;
     @OneToMany(mappedBy = "idUser", cascade = CascadeType.ALL)
-    private Collection<UserLanguage> languages = new ArrayList<>();
+    private Collection<UserLanguage> languages = new ArrayList<>();    
     @OneToMany(mappedBy = "idUser", cascade = CascadeType.ALL)
     private Collection<UserSkill> skills = new ArrayList<>();
     @OneToMany(mappedBy = "idUser", cascade = CascadeType.ALL)

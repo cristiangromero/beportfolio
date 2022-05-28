@@ -1,5 +1,6 @@
 package com.portfolio.beportfolio.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -28,11 +29,13 @@ public class UserSkill{
     @ManyToOne
     @MapsId("idUser")
     @JoinColumn(name = "idUser")
+    @JsonIgnore
     private User idUser;
     
     @ManyToOne
     @MapsId("idSkill")
     @JoinColumn(name = "idSkill")
+    @JsonIgnore
     private Skill idSkill;
     
     private int percent;

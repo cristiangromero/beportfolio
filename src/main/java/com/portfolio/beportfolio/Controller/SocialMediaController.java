@@ -11,50 +11,48 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api/socialmedia")
 public class SocialMediaController {
     @Autowired
     private ISocialMediaService socialMediaServ;    
     
-    @PostMapping
+    @PostMapping("/api/socialmedia")
     public void addSocialMedia (@RequestBody SocialMedia socialMedia){
         socialMediaServ.newSocialMedia(socialMedia);
     }
-    @GetMapping
+    @GetMapping("/api/socialmedia")
     @ResponseBody
     public List<SocialMedia> listSocialMedia(){
         return socialMediaServ.listSocialMedia();
     }
    
-    @GetMapping("/{id}")
+    @GetMapping("/api/socialmedia/{id}")
     @ResponseBody
     public SocialMedia findSocialMedia(@PathVariable Long id){
         return socialMediaServ.findSocialMedia(id);
     }
     
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/api/socialmedia/{id}")
     public void deleteSocialMedia (@PathVariable Long id){
         SocialMedia socialMedia= findSocialMedia(id);
         socialMediaServ.deleteSocialMedia(socialMedia);
     }
     
-    @DeleteMapping
+    @DeleteMapping("/api/socialmedia")
     public void deleteSocialMedia (@RequestBody SocialMedia socialMedia){
         socialMediaServ.deleteSocialMedia(socialMedia);
     }
     
-    @PutMapping
+    @PutMapping("/api/socialmedia")
     public void editSocialMedia (@RequestBody SocialMedia socialMedia){
         socialMediaServ.editSocialMedia(socialMedia);
     }
     
-    @PutMapping("{id}")
+    @PutMapping("/api/socialmedia/{id}")
     public void editSocialMedia(@PathVariable Long id) {
         SocialMedia socialMedia= findSocialMedia(id);
         socialMediaServ.editSocialMedia(socialMedia);

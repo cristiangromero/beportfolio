@@ -11,45 +11,43 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api/experience")
 public class ExperienceController {
     @Autowired
     private IExperienceService experienceServ;    
     
-    @PostMapping
+    @PostMapping("/api/experience")
     public void addExperience (@RequestBody Experience experience){
         experienceServ.newExperience(experience);
     }
-    @GetMapping
+    @GetMapping("/api/experience")
     @ResponseBody
     public List<Experience> listExperience(){
         return experienceServ.listExperience();
     }
    
-    @GetMapping("/{id}")
+    @GetMapping("/api/experience/{id}")
     @ResponseBody
     public Experience findExperience(@PathVariable Long id){
         return experienceServ.findExperience(id);
     }
     
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/api/experience/{id}")
     public void deleteExperience (@PathVariable Long id){
         Experience experience= findExperience(id);
         experienceServ.deleteExperience(experience);
     }
     
-    @PutMapping
+    @PutMapping("/api/experience")
     public void editExperience (@RequestBody Experience experience){
         experienceServ.editExperience(experience);
     }
     
-    @PutMapping("/{id}")
+    @PutMapping("/api/experience/{id}")
     public void editExperience(@PathVariable Long id) {
         Experience experience= findExperience(id);
         experienceServ.editExperience(experience);

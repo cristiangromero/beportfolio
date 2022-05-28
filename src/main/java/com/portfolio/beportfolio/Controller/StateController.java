@@ -11,45 +11,43 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api/state")
 public class StateController {
     @Autowired
     private IStateService stateServ;    
     
-    @PostMapping
+    @PostMapping("/api/state")
     public void addState (@RequestBody State state){
         stateServ.newState(state);
     }
-    @GetMapping
+    @GetMapping("/api/state")
     @ResponseBody
     public List<State> listState(){
         return stateServ.listState();
     }
    
-    @GetMapping("/{id}")
+    @GetMapping("/api/state/{id}")
     @ResponseBody
     public State findState(@PathVariable Long id){
         return stateServ.findState(id);
     }
     
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/api/state/{id}")
     public void deleteState (@PathVariable Long id){
         State state= findState(id);
         stateServ.deleteState(state);
     }
     
-    @PutMapping
+    @PutMapping("/api/state")
     public void editState (@RequestBody State state){
         stateServ.editState(state);
     }
     
-    @PutMapping("/{id}")
+    @PutMapping("/api/state/{id}")
     public void editState(@PathVariable Long id) {
         State state= findState(id);
         stateServ.editState(state);

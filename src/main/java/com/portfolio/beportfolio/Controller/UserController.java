@@ -13,49 +13,47 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.portfolio.beportfolio.service.IUserService;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api/user")
 public class UserController {
     
     @Autowired
     private IUserService userServ;    
     
-    @PostMapping
+    @PostMapping("/api/user")
     public void addUser (@RequestBody User usr){
         userServ.newUser(usr);
     }
-    @GetMapping
+    @GetMapping("/api/user")
     @ResponseBody
     public List<User> listUsers(){
         return userServ.listUsers();
     }
    
-    @GetMapping("/{id}")
+    @GetMapping("/api/user/{id}")
     @ResponseBody
     public User findUser(@PathVariable Long id){
         return userServ.findUser(id);
     }
     
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/api/user/{id}")
     public void deleteUser (@PathVariable Long id){
         User usr= findUser(id);
         userServ.deleteUser(usr);
     }
     
-    @DeleteMapping
+    @DeleteMapping("/api/user")
     public void deleteUser (@RequestBody User usr){
         userServ.deleteUser(usr);
     }
     
-    @PutMapping
+    @PutMapping("/api/user")
     public void editUser (@RequestBody User usr){
         userServ.editUser(usr);
     }
     
-    @PutMapping("/{id}")
+    @PutMapping("/api/user/{id}")
     public void editUser(@PathVariable Long id) {
         User usr= findUser(id);
         userServ.editUser(usr);

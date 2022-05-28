@@ -11,45 +11,43 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api/project")
 public class ProjectController {
     @Autowired
     private IProjectService projectServ;    
     
-    @PostMapping
+    @PostMapping("/api/project")
     public void addProject (@RequestBody Project project){
         projectServ.newProject(project);
     }
-    @GetMapping
+    @GetMapping("/api/project")
     @ResponseBody
     public List<Project> listProject(){
         return projectServ.listProject();
     }
    
-    @GetMapping("/{id}")
+    @GetMapping("/api/project/{id}")
     @ResponseBody
     public Project findProject(@PathVariable Long id){
         return projectServ.findProject(id);
     }
     
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/api/project/{id}")
     public void deleteProject (@PathVariable Long id){
         Project project= findProject(id);
         projectServ.deleteProject(project);
     }
     
-    @PutMapping
+    @PutMapping("/api/project")
     public void editProject (@RequestBody Project project){
         projectServ.editProject(project);
     }
     
-    @PutMapping("/{id}")
+    @PutMapping("/api/project/{id}")
     public void editProject(@PathVariable Long id) {
         Project project= findProject(id);
         projectServ.editProject(project);

@@ -11,45 +11,43 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api/education")
 public class EducationController {
     @Autowired
     private IEducationService educationServ;    
     
-    @PostMapping
+    @PostMapping("/api/education")
     public void addEducation (@RequestBody Education education){
         educationServ.newEducation(education);
     }
-    @GetMapping
+    @GetMapping("/api/education")
     @ResponseBody
     public List<Education> listEducation(){
         return educationServ.listEducation();
     }
    
-    @GetMapping("/{id}")
+    @GetMapping("/api/education/{id}")
     @ResponseBody
     public Education findEducation(@PathVariable Long id){
         return educationServ.findEducation(id);
     }
     
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/api/education/{id}")
     public void deleteEducation (@PathVariable Long id){
         Education education= findEducation(id);
         educationServ.deleteEducation(education);
     }
     
-    @PutMapping
+    @PutMapping("/api/education")
     public void editEducation (@RequestBody Education education){
         educationServ.editEducation(education);
     }
     
-    @PutMapping("/{id}")
+    @PutMapping("/api/education/{id}")
     public void editEducation(@PathVariable Long id) {
         Education education= findEducation(id);
         educationServ.editEducation(education);
