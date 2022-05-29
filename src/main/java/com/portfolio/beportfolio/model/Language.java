@@ -2,8 +2,6 @@ package com.portfolio.beportfolio.model;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -33,6 +31,7 @@ public class Language {
     private String description;
     @OneToMany(mappedBy = "idLanguage", cascade = CascadeType.ALL)
     private Collection<UserLanguage> languages = new ArrayList<>();
+    
 /*    
     public Language(){
         

@@ -1,6 +1,5 @@
 package com.portfolio.beportfolio.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 import java.util.Collection;
 import javax.persistence.CascadeType;
@@ -12,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -60,6 +60,7 @@ public class User {
     private Collection<UserSkill> skills = new ArrayList<>();
     @OneToMany(mappedBy = "idUser", cascade = CascadeType.ALL)
     private Collection<UserSocialMedia> socials = new ArrayList<>();
+    
     /*
     public User(){
         
