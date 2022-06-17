@@ -1,5 +1,6 @@
 package com.portfolio.beportfolio.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 import java.util.Collection;
 import javax.persistence.CascadeType;
@@ -30,6 +31,7 @@ public class Language {
     @Column(nullable = false, length = 150)
     private String description;
     @OneToMany(mappedBy = "idLanguage", cascade = CascadeType.ALL)
+    @JsonIgnore
     private Collection<UserLanguage> languages = new ArrayList<>();
     
 /*    

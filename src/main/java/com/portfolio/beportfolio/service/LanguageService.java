@@ -36,5 +36,9 @@ public class LanguageService implements ILanguageService{
     public void editLanguage(Language language) {
         languageRepo.save(language);
     }
+
+    public Language findLanguageById(Long idLanguage) {
+        return languageRepo.findByIdLanguage(idLanguage);
+    }
     
 }

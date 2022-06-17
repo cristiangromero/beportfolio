@@ -37,5 +37,5 @@ public class UserLanguageService implements IUserLanguageService{
     public void editUserLanguage(UserLanguage userLanguage) {
         userLanguageRepo.save(userLanguage);
     }
-    
+           
 }

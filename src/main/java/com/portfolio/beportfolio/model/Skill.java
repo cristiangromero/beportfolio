@@ -1,5 +1,6 @@
 package com.portfolio.beportfolio.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -30,6 +31,7 @@ public class Skill {
     private Long idSkill;
     @Column(nullable = false, length = 150)
     private String description;
+    @JsonIgnore
     @OneToMany(mappedBy = "idSkill", cascade = CascadeType.ALL)
     private Collection<UserSkill> skills= new ArrayList<>();
 /*    

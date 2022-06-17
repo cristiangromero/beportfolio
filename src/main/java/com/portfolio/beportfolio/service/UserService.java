@@ -10,6 +10,7 @@ import com.portfolio.beportfolio.model.UserSocialMedia;
 import com.portfolio.beportfolio.repository.LanguageRepository;
 import com.portfolio.beportfolio.repository.SkillRepository;
 import com.portfolio.beportfolio.repository.SocialMediaRepository;
+import com.portfolio.beportfolio.repository.UserLanguageRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +24,7 @@ public class UserService implements IUserService {
     public UserRepository userRepo;
     
     @Autowired
-    public LanguageRepository languageRepo;
+    public LanguageService languageService;
     
     @Autowired
     public SkillRepository skillRepo;
@@ -56,36 +57,12 @@ public class UserService implements IUserService {
         newUser.getLanguages().addAll((usr.getLanguages()
                 .stream()
                 .map(userLanguage -> {
-                    Language language = languageRepo.findById(userLanguage.getIdLanguage().getIdLanguage()).orElse(null);
+                    Language language = languageService.findLanguageById(userLanguage.getIdLanguage().getIdLanguage());
                     UserLanguage newUl = new UserLanguage();
                     newUl.setIdLanguage(language);
                     newUl.setIdUser(newUser);
                     newUl.setPercent(userLanguage.getPercent());
                     return newUl;
-                })
-                .collect(Collectors.toList())
-        ));
-        newUser.getSkills().addAll((usr.getSkills()
-                .stream()
-                .map(userSkill -> {
-                    Skill skill = skillRepo.findById(userSkill.getIdSkill().getIdSkill()).orElse(null);
-                    UserSkill newUs = new UserSkill();
-                    newUs.setIdSkill(skill);
-                    newUs.setIdUser(newUser);
-                    newUs.setPercent(userSkill.getPercent());
-                    return newUs;
-                })
-                .collect(Collectors.toList())
-        ));
-        newUser.getSocials().addAll((usr.getSocials()
-                .stream()
-                .map(userSocialMedia -> {
-                    SocialMedia socialMedia = socialRepo.findById(userSocialMedia.getIdSocialMedia().getIdSocialMedia()).orElse(null);
-                    UserSocialMedia newUsm = new UserSocialMedia();
-                    newUsm.setIdSocialMedia(socialMedia);
-                    newUsm.setIdUser(newUser);
-                    newUsm.setUrl(userSocialMedia.getUrl());
-                    return newUsm;
                 })
                 .collect(Collectors.toList())
         ));
