@@ -1,5 +1,6 @@
 package com.portfolio.beportfolio.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -7,28 +8,38 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter @Setter
 @Entity
 @Table(name = "user_skill")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode
 public class UserSkill{
     @EmbeddedId
-    private UserSkillKey idUserSkill;
+    private UserSkillKey idUserSkill = new UserSkillKey();
     
     @ManyToOne
     @MapsId("idUser")
     @JoinColumn(name = "idUser")
+    @JsonIgnore
     private User idUser;
     
     @ManyToOne
     @MapsId("idSkill")
     @JoinColumn(name = "idSkill")
+    @JsonIgnore
     private Skill idSkill;
-    @Column(length = 3)
-    private int percent;
     
+    private int percent;
+/*    
     public UserSkill(){
         
     }
@@ -39,5 +50,5 @@ public class UserSkill{
         this.idSkill = idSkill;
         this.percent = percent;
     }    
-    
+*/    
 }

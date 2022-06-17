@@ -4,6 +4,7 @@ import com.portfolio.beportfolio.model.Experience;
 import com.portfolio.beportfolio.service.IExperienceService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,41 +15,41 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin
 public class ExperienceController {
-    
     @Autowired
     private IExperienceService experienceServ;    
     
-    @PostMapping("/new/experience")
+    @PostMapping("/api/experience")
     public void addExperience (@RequestBody Experience experience){
         experienceServ.newExperience(experience);
     }
-    @GetMapping("/list/experience")
+    @GetMapping("/api/experience")
     @ResponseBody
     public List<Experience> listExperience(){
         return experienceServ.listExperience();
     }
    
-    @GetMapping("/findexperience/{id}")
+    @GetMapping("/api/experience/{id}")
     @ResponseBody
-    public Experience findExperience(@PathVariable Integer id){
+    public Experience findExperience(@PathVariable Long id){
         return experienceServ.findExperience(id);
     }
     
-    @DeleteMapping("/deleteexperience/{id}")
-    public void deleteExperience (@PathVariable Integer id){
-        experienceServ.deleteExperience(id);
+    @DeleteMapping("/api/experience/{id}")
+    public void deleteExperience (@PathVariable Long id){
+        Experience experience= findExperience(id);
+        experienceServ.deleteExperience(experience);
     }
     
-    @PutMapping("/edit/experience")
+    @PutMapping("/api/experience")
     public void editExperience (@RequestBody Experience experience){
         experienceServ.editExperience(experience);
     }
     
-    @PutMapping("/editexperience/{id}")
-    public void editExperience(@PathVariable Integer id) {
+    @PutMapping("/api/experience/{id}")
+    public void editExperience(@PathVariable Long id) {
         Experience experience= findExperience(id);
         experienceServ.editExperience(experience);
     }
-    
 }

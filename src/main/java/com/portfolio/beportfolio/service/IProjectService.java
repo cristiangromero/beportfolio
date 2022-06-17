@@ -6,7 +6,7 @@ import java.util.List;
 public interface IProjectService {
     public List<Project> listProject();
     public void newProject(Project project);
-    public void deleteProject(int id);
-    public Project findProject(int id);
+    public void deleteProject(Project project);
+    public Project findProject(Long id);
     public void editProject(Project project);
 }

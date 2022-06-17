@@ -23,12 +23,12 @@ public class ExperienceService implements IExperienceService{
     }
     
     @Override
-    public void deleteExperience(int id) {
-       experienceRepo.deleteById(id);
+    public void deleteExperience(Experience experience) {
+       experienceRepo.delete(experience);
     }
 
     @Override
-    public Experience findExperience(int id) {
+    public Experience findExperience(Long id) {
        return experienceRepo.findById(id).orElse(null);
     }
     
@@ -36,5 +36,4 @@ public class ExperienceService implements IExperienceService{
     public void editExperience(Experience experience) {
         experienceRepo.save(experience);
     }
-    
 }

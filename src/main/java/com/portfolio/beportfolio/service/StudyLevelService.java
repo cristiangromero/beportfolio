@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.portfolio.beportfolio.service;
 
 import com.portfolio.beportfolio.model.StudyLevel;
@@ -12,7 +8,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class StudyLevelService implements IStudyLevelService{
-            @Autowired
+    
+    @Autowired
     public StudyLevelRepository studyLevelRepo;
     
     @Override
@@ -26,12 +23,12 @@ public class StudyLevelService implements IStudyLevelService{
     }
     
     @Override
-    public void deleteStudyLevel(int id) {
-       studyLevelRepo.deleteById(id);
+    public void deleteStudyLevel(StudyLevel studyLevel) {
+       studyLevelRepo.delete(studyLevel);
     }
 
     @Override
-    public StudyLevel findStudyLevel(int id) {
+    public StudyLevel findStudyLevel(Long id) {
        return studyLevelRepo.findById(id).orElse(null);
     }
     

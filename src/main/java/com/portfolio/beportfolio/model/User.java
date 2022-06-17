@@ -1,7 +1,8 @@
 package com.portfolio.beportfolio.model;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.Collection;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,18 +11,25 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter @Setter
 @Entity
 @Table(name = "users")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idUser;
+    private Long idUser;
     @Column(nullable = false, length = 150)
     private String name;
     @Column(nullable = false, length = 150)
@@ -46,13 +54,14 @@ public class User {
     @ManyToOne
     @JoinColumn(name = "idCity")
     private City idCity;
-    @OneToMany(mappedBy = "idUser")
-    private Set<UserLanguage> languagePercents = new HashSet<>();
-    @OneToMany(mappedBy = "idUser")
-    private Set<UserSkill> skillPercents = new HashSet<>();
-    @OneToMany(mappedBy = "idUser")
-    private Set<UserSocialMedia> socialMediaUrls = new HashSet<>();
+    @OneToMany(mappedBy = "idUser", cascade = CascadeType.ALL)
+    private Collection<UserLanguage> languages = new ArrayList<>();    
+    @OneToMany(mappedBy = "idUser", cascade = CascadeType.ALL)
+    private Collection<UserSkill> skills = new ArrayList<>();
+    @OneToMany(mappedBy = "idUser", cascade = CascadeType.ALL)
+    private Collection<UserSocialMedia> socials = new ArrayList<>();
     
+    /*
     public User(){
         
     }
@@ -76,5 +85,5 @@ public class User {
         this.idCity = idCity;
         
     }
-    
+    */
 }

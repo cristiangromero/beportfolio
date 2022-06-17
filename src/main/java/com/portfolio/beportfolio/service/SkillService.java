@@ -22,12 +22,12 @@ public class SkillService implements ISkillService{
     }
     
     @Override
-    public void deleteSkill(int id) {
-       skillRepo.deleteById(id);
+    public void deleteSkill(Skill skill) {
+       skillRepo.delete(skill);
     }
 
     @Override
-    public Skill findSkill(int id) {
+    public Skill findSkill(Long id) {
        return skillRepo.findById(id).orElse(null);
     }
     
@@ -35,4 +35,7 @@ public class SkillService implements ISkillService{
     public void editSkill(Skill skill) {
         skillRepo.save(skill);
     }
+    
+    
+    
 }

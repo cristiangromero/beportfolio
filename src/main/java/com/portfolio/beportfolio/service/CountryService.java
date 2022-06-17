@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class CountryService implements ICountryService{
     
-        @Autowired
+    @Autowired
     public CountryRepository countryRepo;
     
     @Override
@@ -23,12 +23,12 @@ public class CountryService implements ICountryService{
     }
     
     @Override
-    public void deleteCountry(int id) {
-       countryRepo.deleteById(id);
+    public void deleteCountry(Country country) {
+       countryRepo.delete(country);
     }
 
     @Override
-    public Country findCountry(int id) {
+    public Country findCountry(Long id) {
        return countryRepo.findById(id).orElse(null);
     }
     
@@ -36,5 +36,4 @@ public class CountryService implements ICountryService{
     public void editCountry(Country country) {
         countryRepo.save(country);
     }
-
 }

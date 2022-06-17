@@ -9,7 +9,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class StateService implements IStateService{
-        @Autowired
+    
+    @Autowired
     public StateRepository stateRepo;
     
     @Override
@@ -23,12 +24,12 @@ public class StateService implements IStateService{
     }
     
     @Override
-    public void deleteState(int id) {
-       stateRepo.deleteById(id);
+    public void deleteState(State state) {
+       stateRepo.delete(state);
     }
 
     @Override
-    public State findState(int id) {
+    public State findState(Long id) {
        return stateRepo.findById(id).orElse(null);
     }
     

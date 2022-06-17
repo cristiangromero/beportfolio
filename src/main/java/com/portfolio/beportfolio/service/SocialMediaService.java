@@ -22,12 +22,12 @@ public class SocialMediaService implements ISocialMediaService{
     }
     
     @Override
-    public void deleteSocialMedia(int id) {
-       socialMediaRepo.deleteById(id);
+    public void deleteSocialMedia(SocialMedia socialMedia) {
+       socialMediaRepo.delete(socialMedia);
     }
 
     @Override
-    public SocialMedia findSocialMedia(int id) {
+    public SocialMedia findSocialMedia(Long id) {
        return socialMediaRepo.findById(id).orElse(null);
     }
     

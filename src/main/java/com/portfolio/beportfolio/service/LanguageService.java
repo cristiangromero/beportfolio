@@ -23,12 +23,12 @@ public class LanguageService implements ILanguageService{
     }
     
     @Override
-    public void deleteLanguage(int id) {
-       languageRepo.deleteById(id);
+    public void deleteLanguage(Language language) {
+       languageRepo.delete(language);
     }
 
     @Override
-    public Language findLanguage(int id) {
+    public Language findLanguage(Long id) {
        return languageRepo.findById(id).orElse(null);
     }
     
@@ -36,4 +36,9 @@ public class LanguageService implements ILanguageService{
     public void editLanguage(Language language) {
         languageRepo.save(language);
     }
+
+    public Language findLanguageById(Long idLanguage) {
+        return languageRepo.findByIdLanguage(idLanguage);
+    }
+    
 }

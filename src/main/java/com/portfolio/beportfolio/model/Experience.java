@@ -8,17 +8,23 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter @Setter
 @Entity
 @Table(name = "experience")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Experience {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idExperience;
+    private Long idExperience;
     @Column(nullable = false, length = 150)
     private String title;
     @Column(length = 150)
@@ -34,7 +40,7 @@ public class Experience {
     @ManyToOne
     @JoinColumn(name = "idUser")
     private User idUser;
-    
+/*    
     public Experience(){
         
     }
@@ -52,5 +58,5 @@ public class Experience {
         this.description = description;
         this.idUser = idUser;
     }
-    
+*/    
 }
