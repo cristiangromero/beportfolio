@@ -29,7 +29,7 @@ public class State {
     private String description;
     @ManyToOne
     @JoinColumn(name = "idCountry")
-    private Country idCountry;
+    private Country country;
 /*    
     public State(){
         

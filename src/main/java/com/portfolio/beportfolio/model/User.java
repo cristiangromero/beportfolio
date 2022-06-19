@@ -2,6 +2,7 @@ package com.portfolio.beportfolio.model;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,7 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.PreUpdate;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -54,6 +55,16 @@ public class User {
     @ManyToOne
     @JoinColumn(name = "idCity")
     private City idCity;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idLanguage", referencedColumnName = "idLanguage")
+    private List<Language> language;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idSkill", referencedColumnName = "idSkill")
+    private List<Skill> skill;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idSocialMedia", referencedColumnName = "idSocialMedia")
+    private List<SocialMedia> social;
+/*    
     @OneToMany(mappedBy = "idUser", cascade = CascadeType.ALL)
     private Collection<UserLanguage> languages = new ArrayList<>();    
     @OneToMany(mappedBy = "idUser", cascade = CascadeType.ALL)
@@ -61,7 +72,6 @@ public class User {
     @OneToMany(mappedBy = "idUser", cascade = CascadeType.ALL)
     private Collection<UserSocialMedia> socials = new ArrayList<>();
     
-    /*
     public User(){
         
     }

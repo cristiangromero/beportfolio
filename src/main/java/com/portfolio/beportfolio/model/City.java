@@ -30,7 +30,7 @@ public class City {
     private String description;
     @ManyToOne
     @JoinColumn(name = "idState")
-    private State idState;
+    private State state;
 /*    
     public City(){
         
