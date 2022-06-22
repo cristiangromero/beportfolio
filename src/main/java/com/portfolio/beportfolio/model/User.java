@@ -2,7 +2,9 @@ package com.portfolio.beportfolio.model;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,7 +14,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -49,51 +50,76 @@ public class User {
     private String picture;
     private String iam;
     private String aboutme;
+    
     @ManyToOne
     @JoinColumn(name = "idCivil")
-    private Civil idCivil;
+    private Civil civil;
     @ManyToOne
     @JoinColumn(name = "idCity")
-    private City idCity;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idLanguage", referencedColumnName = "idLanguage")
-    private List<Language> language;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idSkill", referencedColumnName = "idSkill")
-    private List<Skill> skill;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idSocialMedia", referencedColumnName = "idSocialMedia")
-    private List<SocialMedia> social;
-/*    
-    @OneToMany(mappedBy = "idUser", cascade = CascadeType.ALL)
-    private Collection<UserLanguage> languages = new ArrayList<>();    
-    @OneToMany(mappedBy = "idUser", cascade = CascadeType.ALL)
-    private Collection<UserSkill> skills = new ArrayList<>();
-    @OneToMany(mappedBy = "idUser", cascade = CascadeType.ALL)
-    private Collection<UserSocialMedia> socials = new ArrayList<>();
+    private City city;
     
-    public User(){
-        
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    private List<Language> languages;
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    private List<Skill> skills;
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    private List<SocialMedia> socials;
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    private List<Project> projects;
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    private List<Course> courses;
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    private List<Experience> experiences;
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    private List<Education> educations;
+    
+    public void setLanguages(List<Language> languages) {
+        this.languages = languages;
+        for(Language l : languages) {
+            l.setUser(this);
+        }
     }
     
-    public User(int idUser, String name, String surname, String email, String phone, 
-                String street, int streetNumber, java.sql.Date birth, int children, 
-                String picture,String iam, String aboutme, Civil idCivil, City idCity){
-        this.idUser = idUser;
-        this.name = name;
-        this.surname = surname;
-        this.email = email;
-        this.phone = phone;
-        this.street = street;
-        this.streetNumber = streetNumber;
-        this.birth = birth;
-        this.children = children;
-        this.picture = picture;
-        this.iam = iam;
-        this.aboutme = aboutme;
-        this.idCivil = idCivil;
-        this.idCity = idCity;
-        
+    public void setSkills(List<Skill> skills) {
+        this.skills = skills;
+        for(Skill l : skills) {
+            l.setUser(this);
+        }
     }
-    */
+    
+    public void setSocials(List<SocialMedia> socials) {
+        this.socials = socials;
+        for(SocialMedia l : socials) {
+            l.setUser(this);
+        }
+    }
+    
+    public void setProjects(List<Project> projects) {
+        this.projects = projects;
+        for(Project l : projects) {
+            l.setUser(this);
+        }
+    }
+    
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
+        for(Course l : courses) {
+            l.setUser(this);
+        }
+    }
+    
+    public void setExperiences(List<Experience> experiences) {
+        this.experiences = experiences;
+        for(Experience l : experiences) {
+            l.setUser(this);
+        }
+    }
+    
+    public void setEducations(List<Education> educations) {
+        this.educations = educations;
+        for(Education l : educations) {
+            l.setUser(this);
+        }
+    }
+    
 }

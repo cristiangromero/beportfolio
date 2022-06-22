@@ -1,17 +1,14 @@
 package com.portfolio.beportfolio.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import javax.persistence.CascadeType;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -34,23 +31,9 @@ public class Language {
     private String description;
     @Column (nullable = false, length = 3)
     private int percent;
-    @JsonIgnore
-    @OneToOne (mappedBy = "language")
-    private List<User> user;
-    
-/*
-    @OneToMany(mappedBy = "idLanguage", cascade = CascadeType.ALL)
-    @JsonIgnore
-    private Collection<UserLanguage> languages = new ArrayList<>();
-    
-    public Language(){
-        
-    }
-    public Language(int idLanguage, String description){
-        
-        this.idLanguage = idLanguage;
-        this.description = description;        
-        
-    }
-    */
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn (name = "idUser", nullable = false, updatable = false)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private User user;
+
 }

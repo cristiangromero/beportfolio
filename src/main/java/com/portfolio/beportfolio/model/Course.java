@@ -1,7 +1,9 @@
 package com.portfolio.beportfolio.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,22 +31,9 @@ public class Course {
     private String url;
     private String provider;
     private java.sql.Date datefinish;
-    @ManyToOne
-    @JoinColumn(name = "idUser")
-    private User idUser;
-/*    
-    public Course(){
-        
-    }
-    public Course(int idCourse, String title, String url, String provider, java.sql.Date datefinish, User idUser){
-        
-        this.idCourse = idCourse;
-        this.title = title;
-        this.url = url;
-        this.provider = provider;
-        this.datefinish = datefinish;
-        this.idUser = idUser;
-        
-    }
-*/
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn (name = "idUser", nullable = false, updatable = false)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private User user;
+
 }
