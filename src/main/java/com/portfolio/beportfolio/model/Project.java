@@ -1,7 +1,9 @@
 package com.portfolio.beportfolio.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,7 +18,7 @@ import lombok.Setter;
 
 @Getter @Setter
 @Entity
-@Table(name = "project")
+@Table(name = "projects")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -30,23 +32,9 @@ public class Project {
     private String url;
     private String rol;
     private String description;
-    @ManyToOne
-    @JoinColumn(name = "idUser")
-    private User idUser;
- /*   
-    public Project(){
-        
-    }
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn (name = "idPerson", nullable = false, updatable = false)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private Person person;
     
-    public Project(int idProject, String title, String url, String rol, String description, User idUser){
-        
-        this.idProject = idProject;
-        this.title = title;
-        this.url = url;
-        this.rol = rol;
-        this.description = description;
-        this.idUser = idUser;
-        
-    }
-*/    
 }

@@ -1,16 +1,14 @@
 package com.portfolio.beportfolio.model;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
-import javax.persistence.CascadeType;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,7 +22,7 @@ import lombok.Setter;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class SocialMedia {
+public class SocialMedia{
         
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,18 +31,9 @@ public class SocialMedia {
     private String description;
     @Column(nullable = false, length = 50)
     private String icon;
-    @OneToMany(mappedBy = "idSocialMedia", cascade = CascadeType.ALL)
-    private Collection<UserSocialMedia> socials = new ArrayList<>();
-/*    
-    public SocialMedia(){
-        
-    }
-    public SocialMedia(int idSocialMedia, String description, String icon){
-        
-        this.idSocialMedia = idSocialMedia;
-        this.description = description;
-        this.icon = icon;
-        
-    }
-*/    
+    private String url;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn (name = "idPerson", nullable = false, updatable = false)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private Person person;    
 }

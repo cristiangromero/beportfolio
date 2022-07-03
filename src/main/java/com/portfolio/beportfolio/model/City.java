@@ -17,7 +17,7 @@ import lombok.Setter;
 
 @Getter @Setter
 @Entity
-@Table(name = "city")
+@Table(name = "cities")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -30,7 +30,7 @@ public class City {
     private String description;
     @ManyToOne
     @JoinColumn(name = "idState")
-    private State idState;
+    private State states;
 /*    
     public City(){
         

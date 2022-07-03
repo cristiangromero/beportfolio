@@ -14,7 +14,7 @@ import lombok.Setter;
 
 @Getter @Setter
 @Entity
-@Table(name = "studyLevel")
+@Table(name = "studyLevels")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
