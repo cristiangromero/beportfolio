@@ -18,7 +18,7 @@ import lombok.Setter;
 
 @Getter @Setter
 @Entity
-@Table(name = "skill")
+@Table(name = "skills")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -30,8 +30,8 @@ public class Skill {
     private String description;
     private int percent;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn (name = "idUser", nullable = false, updatable = false)
+    @JoinColumn (name = "idPerson", nullable = false, updatable = false)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private User user;
+    private Person person;
     
 }

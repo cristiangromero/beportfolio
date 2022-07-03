@@ -1,10 +1,6 @@
 package com.portfolio.beportfolio.model;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,15 +19,15 @@ import lombok.Setter;
 
 @Getter @Setter
 @Entity
-@Table(name = "users")
+@Table(name = "persons")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class Person {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long idUser;
+    private Long idPerson;
     @Column(nullable = false, length = 150)
     private String name;
     @Column(nullable = false, length = 150)
@@ -40,10 +36,8 @@ public class User {
     private String email;
     @Column(length = 15)
     private String phone;
-    @Column(nullable = true, length = 150)
-    private String street;
-    @Column(nullable = true)
-    private int streetNumber;
+    @Column(nullable = true, length = 250)
+    private String address;
     private java.sql.Date birth;
     @Column(nullable = true)
     private int children;
@@ -58,67 +52,67 @@ public class User {
     @JoinColumn(name = "idCity")
     private City city;
     
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "person",cascade = CascadeType.ALL)
     private List<Language> languages;
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "person",cascade = CascadeType.ALL)
     private List<Skill> skills;
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "person",cascade = CascadeType.ALL)
     private List<SocialMedia> socials;
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "person",cascade = CascadeType.ALL)
     private List<Project> projects;
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "person",cascade = CascadeType.ALL)
     private List<Course> courses;
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "person",cascade = CascadeType.ALL)
     private List<Experience> experiences;
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "person",cascade = CascadeType.ALL)
     private List<Education> educations;
     
     public void setLanguages(List<Language> languages) {
         this.languages = languages;
         for(Language l : languages) {
-            l.setUser(this);
+            l.setPerson(this);
         }
     }
     
     public void setSkills(List<Skill> skills) {
         this.skills = skills;
         for(Skill l : skills) {
-            l.setUser(this);
+            l.setPerson(this);
         }
     }
     
     public void setSocials(List<SocialMedia> socials) {
         this.socials = socials;
         for(SocialMedia l : socials) {
-            l.setUser(this);
+            l.setPerson(this);
         }
     }
     
     public void setProjects(List<Project> projects) {
         this.projects = projects;
         for(Project l : projects) {
-            l.setUser(this);
+            l.setPerson(this);
         }
     }
     
     public void setCourses(List<Course> courses) {
         this.courses = courses;
         for(Course l : courses) {
-            l.setUser(this);
+            l.setPerson(this);
         }
     }
     
     public void setExperiences(List<Experience> experiences) {
         this.experiences = experiences;
         for(Experience l : experiences) {
-            l.setUser(this);
+            l.setPerson(this);
         }
     }
     
     public void setEducations(List<Education> educations) {
         this.educations = educations;
         for(Education l : educations) {
-            l.setUser(this);
+            l.setPerson(this);
         }
     }
     

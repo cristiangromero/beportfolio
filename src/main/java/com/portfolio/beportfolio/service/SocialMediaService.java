@@ -1,9 +1,9 @@
 package com.portfolio.beportfolio.service;
 
 import com.portfolio.beportfolio.model.SocialMedia;
-import com.portfolio.beportfolio.model.User;
+import com.portfolio.beportfolio.model.Person;
 import com.portfolio.beportfolio.repository.SocialMediaRepository;
-import com.portfolio.beportfolio.repository.UserRepository;
+import com.portfolio.beportfolio.repository.PersonRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ public class SocialMediaService implements ISocialMediaService{
     public SocialMediaRepository socialMediaRepo;
     
     @Autowired
-    public UserRepository userRepo;
+    public PersonRepository personRepo;
     
     @Override
     public List<SocialMedia> listSocialMedia() {
@@ -25,11 +25,11 @@ public class SocialMediaService implements ISocialMediaService{
 
     @Override
     public void newSocialMedia(SocialMedia socialMedia) {
-        Optional<User> optionalUser = userRepo.findById(socialMedia.getUser().getIdUser());
-        if (!optionalUser.isPresent()) {
+        Optional<Person> optionalPerson = personRepo.findById(socialMedia.getPerson().getIdPerson());
+        if (!optionalPerson.isPresent()) {
             return;
         }
-        socialMedia.setUser(optionalUser.get());
+        socialMedia.setPerson(optionalPerson.get());
         socialMediaRepo.save(socialMedia);
     }
     
@@ -46,15 +46,15 @@ public class SocialMediaService implements ISocialMediaService{
     @Override
     public void editSocialMedia(SocialMedia socialMedia) {
         
-        Optional<User> optionalUser = userRepo.findById(socialMedia.getUser().getIdUser());
-        if (!optionalUser.isPresent()) {
+        Optional<Person> optionalPerson = personRepo.findById(socialMedia.getPerson().getIdPerson());
+        if (!optionalPerson.isPresent()) {
             return;
         }
         Optional<SocialMedia> optionalSocialMedia = socialMediaRepo.findById(socialMedia.getIdSocialMedia());
         if (!optionalSocialMedia.isPresent()) {
             return;
         }
-        socialMedia.setUser(optionalUser.get());
+        socialMedia.setPerson(optionalPerson.get());
         socialMedia.setIdSocialMedia(optionalSocialMedia.get().getIdSocialMedia());
         socialMediaRepo.save(socialMedia);
     }

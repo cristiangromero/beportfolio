@@ -1,9 +1,9 @@
 package com.portfolio.beportfolio.service;
 
 import com.portfolio.beportfolio.model.Education;
-import com.portfolio.beportfolio.model.User;
+import com.portfolio.beportfolio.model.Person;
 import com.portfolio.beportfolio.repository.EducationRepository;
-import com.portfolio.beportfolio.repository.UserRepository;
+import com.portfolio.beportfolio.repository.PersonRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ public class EducationService implements IEducationService{
     public EducationRepository educationRepo;
     
     @Autowired
-    public UserRepository userRepo;
+    public PersonRepository personRepo;
     
     @Override
     public List<Education> listEducation() {
@@ -26,11 +26,11 @@ public class EducationService implements IEducationService{
     @Override
     public void newEducation(Education education) {
         
-        Optional<User> optionalUser = userRepo.findById(education.getUser().getIdUser());
-        if (!optionalUser.isPresent()) {
+        Optional<Person> optionalPerson = personRepo.findById(education.getPerson().getIdPerson());
+        if (!optionalPerson.isPresent()) {
             return;
         }
-        education.setUser(optionalUser.get());
+        education.setPerson(optionalPerson.get());
         educationRepo.save(education);
         
     }
@@ -48,15 +48,15 @@ public class EducationService implements IEducationService{
     @Override
     public void editEducation(Education education) {
         
-        Optional<User> optionalUser = userRepo.findById(education.getUser().getIdUser());
-        if (!optionalUser.isPresent()) {
+        Optional<Person> optionalPerson = personRepo.findById(education.getPerson().getIdPerson());
+        if (!optionalPerson.isPresent()) {
             return;
         }
         Optional<Education> optionalEducation = educationRepo.findById(education.getIdEducation());
         if (!optionalEducation.isPresent()) {
             return;
         }
-        education.setUser(optionalUser.get());
+        education.setPerson(optionalPerson.get());
         education.setIdEducation(optionalEducation.get().getIdEducation());
         educationRepo.save(education);
 

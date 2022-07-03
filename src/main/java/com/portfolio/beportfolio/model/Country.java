@@ -18,7 +18,7 @@ import lombok.Setter;
 
 @Getter @Setter
 @Entity
-@Table(name = "country")
+@Table(name = "countries")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

@@ -18,7 +18,7 @@ import lombok.Setter;
 
 @Getter @Setter
 @Entity
-@Table(name = "project")
+@Table(name = "projects")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -33,8 +33,8 @@ public class Project {
     private String rol;
     private String description;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn (name = "idUser", nullable = false, updatable = false)
+    @JoinColumn (name = "idPerson", nullable = false, updatable = false)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private User user;
+    private Person person;
     
 }
