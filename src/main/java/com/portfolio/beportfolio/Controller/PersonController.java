@@ -25,13 +25,13 @@ public class PersonController {
     public void addPerson (@RequestBody Person usr){
         personServ.newPerson(usr);
     }
-    @GetMapping("/api/person")
+    @GetMapping("/publicapi/person")
     @ResponseBody
     public List<Person> listPersons(){
         return personServ.listPersons();
     }
    
-    @GetMapping("/api/person/{id}")
+    @GetMapping("/publicapi/person/{id}")
     @ResponseBody
     public Person findPerson(@PathVariable Long id){
         return personServ.findPerson(id);
