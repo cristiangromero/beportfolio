@@ -12,48 +12,56 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.portfolio.beportfolio.service.IPersonService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-@RestController
 @CrossOrigin
+@RestController
+@RequestMapping("/api/person")
 public class PersonController {
     
     @Autowired
     private IPersonService personServ;    
     
-    @PostMapping("/api/person")
+    @PreAuthorize("isAuthenticated()")
+    @PostMapping
     public void addPerson (@RequestBody Person usr){
         personServ.newPerson(usr);
     }
-    @GetMapping("/publicapi/person")
+    @GetMapping
     @ResponseBody
     public List<Person> listPersons(){
         return personServ.listPersons();
     }
    
-    @GetMapping("/publicapi/person/{id}")
+    @GetMapping("/{id}")
     @ResponseBody
     public Person findPerson(@PathVariable Long id){
         return personServ.findPerson(id);
     }
     
-    @DeleteMapping("/api/person/{id}")
+    @PreAuthorize("isAuthenticated()")
+    @DeleteMapping("/{id}")
     public void deletePerson (@PathVariable Long id){
         Person usr= findPerson(id);
         personServ.deletePerson(usr);
     }
     
-    @DeleteMapping("/api/person")
+    @PreAuthorize("isAuthenticated()")
+    @DeleteMapping
     public void deletePerson (@RequestBody Person usr){
         personServ.deletePerson(usr);
     }
     
-    @PutMapping("/api/person")
+    @PreAuthorize("isAuthenticated()")
+    @PutMapping
     public void editPerson (@RequestBody Person usr){
         personServ.editPerson(usr);
     }
     
-    @PutMapping("/api/person/{id}")
+    @PreAuthorize("isAuthenticated()")
+    @PutMapping("/{id}")
     public void editPerson(@PathVariable Long id) {
         Person usr= findPerson(id);
         personServ.editPerson(usr);

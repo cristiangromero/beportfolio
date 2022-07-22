@@ -42,15 +42,18 @@ public class Person {
     @Column(nullable = true)
     private int children;
     private String picture;
+    private String avatar;
     private String iam;
     private String aboutme;
     
     @ManyToOne
     @JoinColumn(name = "idCivil")
     private Civil civil;
+    /*
     @ManyToOne
     @JoinColumn(name = "idCity")
     private City city;
+    */
     
     @OneToMany(mappedBy = "person",cascade = CascadeType.ALL)
     private List<Language> languages;
