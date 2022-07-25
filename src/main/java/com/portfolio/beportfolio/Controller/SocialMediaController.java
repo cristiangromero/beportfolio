@@ -3,6 +3,7 @@ package com.portfolio.beportfolio.Controller;
 import com.portfolio.beportfolio.model.SocialMedia;
 import com.portfolio.beportfolio.service.ISocialMediaService;
 import java.util.List;
+import javax.annotation.security.PermitAll;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -16,9 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@CrossOrigin
+
 @RestController
 @RequestMapping("/api/socialmedia")
+@CrossOrigin
 public class SocialMediaController {
     @Autowired
     private ISocialMediaService socialMediaServ;    
@@ -28,6 +30,7 @@ public class SocialMediaController {
     public void addSocialMedia (@RequestBody SocialMedia socialMedia){
         socialMediaServ.newSocialMedia(socialMedia);
     }
+    
     @GetMapping
     @ResponseBody
     public List<SocialMedia> listSocialMedia(){

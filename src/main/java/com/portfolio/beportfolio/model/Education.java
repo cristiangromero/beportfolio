@@ -35,9 +35,7 @@ public class Education {
     private boolean currentStudy;
     @Column(nullable = false, length = 150)
     private String institute;
-    @ManyToOne
-    @JoinColumn(name = "idStudyLevel")
-    private StudyLevel idStudylevel;
+    private String studyLevel;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn (name = "idPerson", nullable = false, updatable = false)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

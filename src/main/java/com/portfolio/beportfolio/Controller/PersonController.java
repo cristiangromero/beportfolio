@@ -12,13 +12,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.portfolio.beportfolio.service.IPersonService;
+import javax.annotation.security.PermitAll;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@CrossOrigin
+
 @RestController
 @RequestMapping("/api/person")
+@CrossOrigin
 public class PersonController {
     
     @Autowired
@@ -29,6 +31,7 @@ public class PersonController {
     public void addPerson (@RequestBody Person usr){
         personServ.newPerson(usr);
     }
+    
     @GetMapping
     @ResponseBody
     public List<Person> listPersons(){
