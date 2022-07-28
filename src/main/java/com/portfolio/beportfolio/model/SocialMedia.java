@@ -1,5 +1,6 @@
 package com.portfolio.beportfolio.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -35,5 +36,6 @@ public class SocialMedia{
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn (name = "idPerson", nullable = false, updatable = false)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @JsonBackReference
     private Person person;    
 }

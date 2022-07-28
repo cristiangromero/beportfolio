@@ -25,7 +25,7 @@ public class SocialMediaController {
     @Autowired
     private ISocialMediaService socialMediaServ;    
     
-    @PreAuthorize("isAuthenticated()")
+ //   @PreAuthorize("isAuthenticated()")
     @PostMapping
     public void addSocialMedia (@RequestBody SocialMedia socialMedia){
         socialMediaServ.newSocialMedia(socialMedia);
