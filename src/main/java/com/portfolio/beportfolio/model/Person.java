@@ -7,8 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -41,16 +39,20 @@ public class Person {
     private java.sql.Date birth;
     @Column(nullable = true)
     private int children;
-    private String picture;
+    private String lastGraduation;
+    private String avatar;
     private String iam;
     private String aboutme;
-    
+    private String civil;
+    /*
     @ManyToOne
     @JoinColumn(name = "idCivil")
     private Civil civil;
+   
     @ManyToOne
     @JoinColumn(name = "idCity")
     private City city;
+    */
     
     @OneToMany(mappedBy = "person",cascade = CascadeType.ALL)
     private List<Language> languages;
