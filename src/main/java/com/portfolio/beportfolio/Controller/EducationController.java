@@ -23,7 +23,7 @@ public class EducationController {
     @Autowired
     private IEducationService educationServ;    
     
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @PostMapping
     public void addEducation (@RequestBody Education education){
         educationServ.newEducation(education);
@@ -40,20 +40,20 @@ public class EducationController {
         return educationServ.findEducation(id);
     }
     
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @DeleteMapping("/{id}")
     public void deleteEducation (@PathVariable Long id){
         Education education= findEducation(id);
         educationServ.deleteEducation(education);
     }
     
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @PutMapping
     public void editEducation (@RequestBody Education education){
         educationServ.editEducation(education);
     }
     
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @PutMapping("/{id}")
     public void editEducation(@PathVariable Long id) {
         Education education= findEducation(id);

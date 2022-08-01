@@ -23,7 +23,7 @@ public class SkillController {
     @Autowired
     private ISkillService skillServ;    
     
-    @PreAuthorize("isAuthenticated()")
+ //   @PreAuthorize("isAuthenticated()")
     @PostMapping
     public void addSkill (@RequestBody Skill skill){
         skillServ.newSkill(skill);
@@ -40,26 +40,26 @@ public class SkillController {
         return skillServ.findSkill(id);
     }
     
-    @PreAuthorize("isAuthenticated()")
+ //   @PreAuthorize("isAuthenticated()")
     @DeleteMapping("/{id}")
     public void deleteSkill (@PathVariable Long id){
         Skill skill = findSkill(id);
         skillServ.deleteSkill(skill);
     }
     
-    @PreAuthorize("isAuthenticated()")
+//   @PreAuthorize("isAuthenticated()")
     @DeleteMapping
     public void deleteSkill (@RequestBody Skill skill){
         skillServ.deleteSkill(skill);
     }
     
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @PutMapping
     public void editSkill (@RequestBody Skill skill){
         skillServ.editSkill(skill);
     }
     
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @PutMapping("/{id}")
     public void editSkill(@PathVariable Long id) {
         Skill skill= findSkill(id);

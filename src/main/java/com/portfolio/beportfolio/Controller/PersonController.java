@@ -57,13 +57,13 @@ public class PersonController {
         personServ.deletePerson(usr);
     }
     
-    @PreAuthorize("isAuthenticated()")
+ //   @PreAuthorize("isAuthenticated()")
     @PutMapping
     public void editPerson (@RequestBody Person usr){
         personServ.editPerson(usr);
     }
     
-    @PreAuthorize("isAuthenticated()")
+ //   @PreAuthorize("isAuthenticated()")
     @PutMapping("/{id}")
     public void editPerson(@PathVariable Long id) {
         Person usr= findPerson(id);

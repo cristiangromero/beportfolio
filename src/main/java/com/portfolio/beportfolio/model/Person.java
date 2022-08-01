@@ -39,7 +39,7 @@ public class Person {
     private java.sql.Date birth;
     @Column(nullable = true)
     private int children;
-    private String picture;
+    private String lastGraduation;
     private String avatar;
     private String iam;
     private String aboutme;

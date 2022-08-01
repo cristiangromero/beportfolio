@@ -29,12 +29,12 @@ public class Education {
     @Column(nullable = false, length = 150)
     private String title;
     @Column(nullable = false)
+    private String school;
     private java.sql.Date dateini;
     private java.sql.Date datefinish;
     @Column(nullable = true)
     private boolean currentStudy;
     @Column(nullable = false, length = 150)
-    private String institute;
     private String studyLevel;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn (name = "idPerson", nullable = false, updatable = false)

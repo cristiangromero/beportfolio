@@ -23,7 +23,7 @@ public class ProjectController {
     @Autowired
     private IProjectService projectServ;    
     
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @PostMapping
     public void addProject (@RequestBody Project project){
         projectServ.newProject(project);
@@ -40,20 +40,20 @@ public class ProjectController {
         return projectServ.findProject(id);
     }
     
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @DeleteMapping("/{id}")
     public void deleteProject (@PathVariable Long id){
         Project project= findProject(id);
         projectServ.deleteProject(project);
     }
     
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @PutMapping
     public void editProject (@RequestBody Project project){
         projectServ.editProject(project);
     }
     
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @PutMapping("/{id}")
     public void editProject(@PathVariable Long id) {
         Project project= findProject(id);

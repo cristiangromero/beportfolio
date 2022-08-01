@@ -23,7 +23,7 @@ public class CourseController {
     @Autowired
     private ICourseService courseServ;    
     
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @PostMapping
     public void addCourse (@RequestBody Course course){
         courseServ.newCourse(course);
@@ -40,20 +40,20 @@ public class CourseController {
         return courseServ.findCourse(id);
     }
     
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @DeleteMapping("/{id}")
     public void deleteCourse (@PathVariable Long id){
         Course course= findCourse(id);
         courseServ.deleteCourse(course);
     }
     
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @PutMapping
     public void editCourse (@RequestBody Course course){
         courseServ.editCourse(course);
     }
     
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @PutMapping("/{id}")
     public void editCourse(@PathVariable Long id) {
         Course course= findCourse(id);

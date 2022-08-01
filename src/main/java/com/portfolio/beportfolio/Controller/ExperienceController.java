@@ -23,7 +23,7 @@ public class ExperienceController {
     @Autowired
     private IExperienceService experienceServ;    
     
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @PostMapping
     public void addExperience (@RequestBody Experience experience){
         experienceServ.newExperience(experience);
@@ -40,20 +40,20 @@ public class ExperienceController {
         return experienceServ.findExperience(id);
     }
     
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @DeleteMapping("/{id}")
     public void deleteExperience (@PathVariable Long id){
         Experience experience= findExperience(id);
         experienceServ.deleteExperience(experience);
     }
     
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @PutMapping
     public void editExperience (@RequestBody Experience experience){
         experienceServ.editExperience(experience);
     }
     
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @PutMapping("/{id}")
     public void editExperience(@PathVariable Long id) {
         Experience experience= findExperience(id);

@@ -23,7 +23,7 @@ public class LanguageController {
     @Autowired
     private ILanguageService languageServ;    
     
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @PostMapping
     public void addLanguage (@RequestBody Language language){
         languageServ.newLanguage(language);
@@ -41,20 +41,20 @@ public class LanguageController {
         return languageServ.findLanguage(id);
     }
     
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @DeleteMapping("/{id}")
     public void deleteLanguage (@PathVariable Long id){
         Language language= findLanguage(id);
         languageServ.deleteLanguage(language);
     }
     
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @PutMapping
     public void editLanguage (@RequestBody Language language){
         languageServ.editLanguage(language);
     }
     
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @PutMapping("/{id}")
     public void editLanguage(@PathVariable Long id) {
         Language language= findLanguage(id);
